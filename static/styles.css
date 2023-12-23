@@ -1,0 +1,17 @@
+:root{
+    font-family: 'Lexend', sans-serif;
+    color: rgb(90, 167, 98);
+    font-size: 3em;
+}
+
+body{
+    background-color: rgb(71, 22, 49);
+}
+
+div{
+    background-color: black;
+}
+
+p{
+    background-color: black;
+}
