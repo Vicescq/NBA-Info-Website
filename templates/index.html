@@ -12,10 +12,15 @@
 <body>
     <h1>Header!</h1>
     
-    {% for _ in range(game_count)%}
-    <div> div!! </div>
+    {% if not game_count %}
+    <div> No games today! </div>
+
+    {% else %}
+    {% for i in range(game_count) %}
+    <div> {{matchups[i]}} </div>
     {% endfor %}
-    
+    {% endif %}
+
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, numquam perspiciatis? Numquam velit voluptate modi vel sit voluptates odit harum. Iusto assumenda minima eos aspernatur ducimus eveniet dolor expedita accusantium?</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, numquam perspiciatis? Numquam velit voluptate modi vel sit voluptates odit harum. Iusto assumenda minima eos aspernatur ducimus eveniet dolor expedita accusantium?</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, numquam perspiciatis? Numquam velit voluptate modi vel sit voluptates odit harum. Iusto assumenda minima eos aspernatur ducimus eveniet dolor expedita accusantium?</p>
