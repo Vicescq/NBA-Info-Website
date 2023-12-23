@@ -13,6 +13,32 @@ div{
     text-align: center;
 }
 
-p{
-    background-color: black;
+.background_container{
+    /* background-image: url(/static/images/test.jpg); */
+    padding: 2%;
 }
+
+.match_container{
+    display: flex;
+    
+}
+
+.match_a{
+    width: 50%;
+    text-align: right;
+    padding-right: 1%;
+
+}
+
+.match_h{
+    width: 50%;
+    text-align: left;
+    padding-left: 1%;
+}
+
+
+
+
+
+
+

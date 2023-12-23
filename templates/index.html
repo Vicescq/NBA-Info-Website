@@ -17,7 +17,13 @@
 
     {% else %}
     {% for i in range(game_count) %}
-    <div> {{matchups[i]}} </div>
+    <div class="background_container">
+        <div class="match_container"> 
+            <div class="match_a"> {{matchups[i][0]}} </div>
+            <div class="match_@"> @ </div>
+            <div class="match_h"> {{matchups[i][1]}} </div>
+        </div>
+    </div>
     {% endfor %}
     {% endif %}
 
