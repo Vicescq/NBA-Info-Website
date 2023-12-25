@@ -4,38 +4,60 @@
     font-size: 3em;
 }
 
+h1{
+    padding-left: 10%;
+}
+
 body{
-    background-color: rgb(71, 22, 49);
+    background-color: rgb(36, 21, 30);
+    margin: 10%;
 }
 
 div{
-    background-color: black;
+    background-color: black; /* dbg */
     text-align: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
+#nogames{
+    background-color: rgb(110, 40, 40);
+    border-style: solid;
+    border-radius: 10px;
+    padding: 2.5%;
+}
 
 .match_container{
     display: flex;
-    
+    background-color: rgb(41, 32, 62);
+    border-style: solid;
+    border-radius: 10px;
+    padding: 1%;
 }
 
+.match_container > div{
+    background-color: rgb(41, 32, 62);
+}
+
+
 .match_a{
+    display: flex;
+    flex-direction: column;
     width: 50%;
     text-align: right;
     padding-right: 1%;
-
 }
 
+
+
 .match_h{
+    display: flex;
+    flex-direction: column;
     width: 50%;
     text-align: left;
     padding-left: 1%;
 }
 
-.logos{
-    width: 10%;
-    height: 10%;
-}
 
 
 
