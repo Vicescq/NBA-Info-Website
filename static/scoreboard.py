@@ -62,9 +62,23 @@ def assign_logos(matchups):
         logos.append((away_logo, home_logo))
     return logos
 
+def package_data():
+    data = {}
+    games = get_livegames()
+    game_count = get_game_count(games)
+    matchups = get_matchups(games)
+    team_records = get_team_records(games)
+    livescores = get_livescores(games)
+    game_status = get_gamestatus(games)
+    logos = assign_logos(matchups)
 
-def gen_randnum():
-    url = "https://csrng.net/csrng/csrng.php?min=1&max=100"
-    response = requests.get(url)
-    return response.json()[0]["random"]
+    data["games"] = games
+    data["game_count"] = game_count
+    data["matchups"] = matchups
+    data["team_records"] = team_records
+    data["livescores"] = livescores
+    data["game_status"] = game_status
+    data["game_count"] = game_count
+    data["logos"] = logos
+    return data
 
