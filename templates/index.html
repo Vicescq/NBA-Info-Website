@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>NBA General Web Scraping</title>
+    
     <!-- FONT / Lexend 600 bold --> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    
     <script>
         // $(document).ready(function(){
             
@@ -43,40 +46,70 @@
     
     <div class="match_container">
         
-        <div class="match_a"> 
+        <div class="match_a">
+
             <div class="score_a">
                 100
             </div>
+
             <div class="misc_a">
+                
                 <div class="logo_a">
                     <img src="..\static\images\logos\ATL.svg">
                 </div>
-                <div class="abv_a">ATL</div>
+                
+                <div class="abv_and_rec_a">
+                    
+                    <div class="abv_a">
+                        ATL
+                    </div>
+                    
+                    <p class="rec_a">82-0</p>
+                </div>
+            
             </div>
+        
         </div>
         
 
 
         <div class="match_mid">  
+            
             <div class="match_status">
                 END
             </div>
+            
             <div class="match_loc">
                 <img id="arrow" src="..\static\images\right-arrow.png">
             </div>
+        
         </div>
         
     
         <div class="match_h"> 
+            
             <div class="misc_h">
+                
                 <div class="logo_h">
                     <img src="..\static\images\logos\BOS.svg">
                 </div>
-                <div class="abv_h">BOS</div>
+                
+                <div class="abv_and_rec_h">
+                    
+                    <div class="abv_h">
+                        BOS
+                    </div>
+                    
+                    <p class="rec_h">82-0</p>
+                
+                </div>
+            
             </div>
+            
             <div class="score_h">
                 200
             </div>
+        
         </div>
 
     </div>

@@ -67,8 +67,22 @@ img{
 .logo_a{
     flex: 2;
 }
-.abv_a{
+.abv_and_rec_a{
+    display: flex;
+    flex-direction: column;
     flex: 1;
+}
+.abv_and_rec_a > *{
+    background-color: rgb(41, 32, 62);
+}
+.abv_a{
+    flex: 2;
+}
+.rec_a{
+    flex: 1;
+    font-size: 0.6em; 
+    color: #999;
+    margin: 0;
 }
 .score_a{
     display: flex;
@@ -123,8 +137,23 @@ img{
 .logo_h{
     flex: 2;
 }
+
+.abv_and_rec_h{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.abv_and_rec_h > *{
+    background-color: rgb(41, 32, 62);
+}
 .abv_h{
     flex: 1;
+}
+.rec_h{
+    flex: 1;
+    font-size: 0.6em; 
+    color: #999;
+    margin: 0;
 }
 .score_h{
     display: flex;
