@@ -1,40 +1,46 @@
 :root{
     font-family: 'Lexend', sans-serif;
     color: rgb(90, 167, 98);
-    font-size: 3em;
+    font-size: 2em;
 }
+
 
 h1{
     padding-left: 10%;
 }
-
 body{
     background-color: rgb(36, 21, 30);
     margin: 10%;
 }
-
 div{
     background-color: black; /* dbg */
     text-align: center;
-    margin-top: 3%;
-    margin-bottom: 3%;
 }
+img{
+    width: 100%;
+    height: 100%;
+}
+
 
 #nogames{
     background-color: rgb(110, 40, 40);
     border-style: solid;
     border-radius: 10px;
     padding: 2.5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
+
 
 .match_container{
     display: flex;
     background-color: rgb(41, 32, 62);
     border-style: solid;
     border-radius: 10px;
-    padding: 1%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding-bottom: 1.5%;
 }
-
 .match_container > div{
     background-color: rgb(41, 32, 62);
 }
@@ -42,42 +48,94 @@ div{
 
 .match_a{
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 50%;
-    text-align: right;
-    padding-right: 1%;
+    flex: 1;
 }
-
-.match_a > div{
+.match_a > *{
     background-color: rgb(41, 32, 62);
 }
-
+.score_a{
+    flex: 2;
+}
+.misc_a{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.misc_a > * {
+    background-color: rgb(41, 32, 62);
+}
+.logo_a{
+    flex: 2;
+}
 .abv_a{
-    width: 50%;
-    height: 50%;
+    flex: 1;
+}
+.score_a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 250%;
 }
 
-.logo_a{
 
-    width: 75%;
-    height: 50%;
+
+.match_mid{
+    display: flex;
+    flex-direction: column;
+    flex: .25;
+}
+.match_mid > *{
+    background-color: rgb(41, 32, 62);
+}
+.match_status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100.1%;
+    flex: 5.5; /* why this num? trial and error :) */
+}
+.match_loc{
+    flex: 1;
+}
+#arrow{
+    width: 30%;
 }
 
 
 .match_h{
     display: flex;
+    flex: 1;
+}
+.match_h > *{
+    background-color: rgb(41, 32, 62);
+}
+.score_h{
+    flex: 2;
+}
+.misc_h{
+    display: flex;
     flex-direction: column;
-    width: 50%;
-    text-align: left;
-    padding-left: 1%;
+    flex: 1;
+}
+.misc_h > * {
+    background-color: rgb(41, 32, 62);
+}
+.logo_h{
+    flex: 2;
+}
+.abv_h{
+    flex: 1;
+}
+.score_h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 250%;
 }
 
 
-img{
-    width: 100%;
-    height: 100%;
-}
+
+
 
 
 
