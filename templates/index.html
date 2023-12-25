@@ -10,15 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
     <script>
-        $(document).ready(function(){
+        // $(document).ready(function(){
             
-            function update_values(){
-                $.get("/update", function(data){
-                    $("#test").text(JSON.stringify(data))
-                })
-            }
-            setInterval(update_values, 2000)
-        })
+        //     function update_values(){
+        //         $.get("/update", function(data){
+        //             $("#test").text(JSON.stringify(data))
+        //         })
+        //     }
+        //     setInterval(update_values, 2000)
+        // })
     </script>
 </head>
 
@@ -32,16 +32,17 @@
 
     {% else %}
     {% for i in range(game_count) %}
-    <div class="background_container">
-        <div class="match_container"> 
-            <div class="match_a"> {{matchups[i][0]}} </div>
-            <div class="match_@"> @ </div>
-            <div class="match_h"> {{matchups[i][1]}} </div>
-        </div>
+    
+    <div class="match_container"> 
+        <div class="match_a"> {{matchups[i][0]}} </div>
+        <div class="match_@"> @ </div>
+        <div class="match_h"> {{matchups[i][1]}} </div>
     </div>
     {% endfor %}
     {% endif %}
-    <div id="test">0</div>
+    
+    
+    <div id="match_container">0</div>
 
     
 

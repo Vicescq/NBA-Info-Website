@@ -13,10 +13,6 @@ div{
     text-align: center;
 }
 
-.background_container{
-    /* background-image: url(/static/images/test.jpg); */
-    padding: 2%;
-}
 
 .match_container{
     display: flex;
