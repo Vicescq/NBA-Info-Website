@@ -43,11 +43,26 @@ div{
 .match_a{
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
     width: 50%;
     text-align: right;
     padding-right: 1%;
 }
 
+.match_a > div{
+    background-color: rgb(41, 32, 62);
+}
+
+.abv_a{
+    width: 50%;
+    height: 50%;
+}
+
+.logo_a{
+
+    width: 75%;
+    height: 50%;
+}
 
 
 .match_h{
@@ -57,6 +72,13 @@ div{
     text-align: left;
     padding-left: 1%;
 }
+
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
 
 
 
