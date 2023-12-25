@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>NBA General Web Scraping</title>
     
@@ -11,18 +13,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
-    
-    <script>
-        // $(document).ready(function(){
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+    <!-- <script>
+        $(document).ready(function(){
             
-        //     function update_values(){
-        //         $.get("/update", function(data){
-        //             $("#test").text(JSON.stringify(data))
-        //         })
-        //     }
-        //     setInterval(update_values, 2000)
-        // })
-    </script>
+            function update_values(){
+                $.get("/update", function(data){
+                    console.log(data)
+                    var game_count = data.game_count;
+                    var matchups = data.matchups;
+                    var team_records = data.team_records;
+                    var livescores = data.livescores;
+                    var game_status = data.game_status;
+                    var logos = data.logos;
+                    
+                    for (var i = 0; i < game_count; i++) {
+                        $("#score_a_" + i).text(livescores[i][0]);
+                        $("#score_h_" + i).text(livescores[i][1]);
+                        
+                        $("#logo_a_" + i).attr("src", logos[i][0])
+                        $("#logo_h_" + i).attr("src", logos[i][1])
+
+                        $("#abv_a_" + i).text(matchups[i][0])
+                        $("#abv_h_" + i).text(matchups[i][1])
+                        $("#rec_a_" + i).text(team_records[i][0])
+                        $("#rec_h_" + i).text(team_records[i][1])
+                        $("#match_status_" + i).text(game_status[i])
+                    }
+                })
+            }
+            setInterval(update_values, 2000)
+        })
+    </script> -->
 </head>
 
 
@@ -35,47 +58,52 @@
 
     {% else %}
     {% for i in range(game_count) %}
-    <div class="match_container"> 
+    
 
-        <div class="match_container">
-            <div class="match_a">
-                <div class="score_a"> {{livescores[i][0]}} </div>
-                <div class="misc_a">
-                    <div class="logo_a">
-                        <img id="logo_a_{{i}}">
-                        <script>
-                            var logo_path = "..\\static\\images\\logos\\" + "{{matchups[i][0]}}" + ".svg"
-                            document.getElementById("logo_a_{{i}}").src=logo_path
-                        </script>
+    <div class="match_container">
+        <div class="match_a">
+            <div class="score_a" id="score_a_{{i}}"> {{livescores[i][0]}} </div>
+            <div class="misc_a">
+                <div class="logo_a">
+                    <img id="logo_a_{{i}}">
+                    <script>
+                        var logo_path = "..\\static\\images\\logos\\" + "{{matchups[i][0]}}" + ".svg"
+                        document.getElementById("logo_a_{{i}}").src=logo_path
+                    </script>
 
-                    </div>
-                    <div class="abv_and_rec_a">
-                        <div class="abv_a"> {{matchups[i][0]}} </div>
-                        <p class="rec_a"> {{team_records[i][0]}} </p>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="match_mid">      
-                <div class="match_status"> {{game_status[i]}} </div>
-                <div class="match_loc">
-                    <img id="arrow" src="..\static\images\right-arrow.png">
+                <div class="abv_and_rec_a">
+                    <div class="abv_a" id="abv_a_{{i}}"> {{matchups[i][0]}} </div>
+                    <p class="rec_a" id="rec_a_{{i}}"> {{team_records[i][0]}} </p>
                 </div>
-            </div>
-            
-            <div class="match_h"> 
-                <div class="misc_h">
-                    <div class="logo_h">
-                        <img id="logo_h" src="..\static\images\logos\DEN.svg">
-                    </div>
-                    <div class="abv_and_rec_h">
-                        <div class="abv_h"> {{matchups[i][1]}} </div>
-                        <p class="rec_h"> {{team_records[i][1]}} </p>
-                    </div>
-                </div>
-                <div class="score_h"> {{livescores[i][1]}} </div>
             </div>
         </div>
+        
+        <div class="match_mid">      
+            <div class="match_status" id="match_status_{{i}}"> {{game_status[i]}} </div>
+            <div class="match_loc">
+                <img id="arrow" src="..\static\images\right-arrow.png">
+            </div>
+        </div>
+        
+        <div class="match_h"> 
+            <div class="misc_h">
+                <div class="logo_h">
+                    <img id="logo_h_{{i}}">
+                    <script>
+                        var logo_path = "..\\static\\images\\logos\\" + "{{matchups[i][1]}}" + ".svg"
+                        document.getElementById("logo_h_{{i}}").src=logo_path
+                    </script>
+
+                </div>
+                <div class="abv_and_rec_h">
+                    <div class="abv_h" id="abv_h_{{i}}"> {{matchups[i][1]}} </div>
+                    <p class="rec_h" id="rec_h_{{i}}"> {{team_records[i][1]}} </p>
+                </div>
+            </div>
+            <div class="score_h" id="score_h_{{i}}"> {{livescores[i][1]}} </div>
+        </div>
+    </div>
     
     
         
@@ -83,7 +111,7 @@
 
 
 
-    </div>
+    
     {% endfor %}
     {% endif %}
     

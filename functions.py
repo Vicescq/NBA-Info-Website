@@ -37,16 +37,21 @@ def get_livescores(games):
     for game in games:
         away_score = str(game["awayTeam"]["score"])
         home_score = str(game["homeTeam"]["score"])
-        scores.append((away_score, home_score))
+        if (away_score == "0" and home_score == "0"):
+            scores.append(("", ""))
+        else:
+            scores.append((away_score, home_score))
     return scores
 
 def get_gamestatus(games):
     status = []
     for game in games:
-        if (game["gameStatusText"] == "Final"):
+        if (game["gameStatusText"].strip() == "Final"):
             status.append("END")
+        elif (game["gameStatusText"] == "Half"):
+            status.append("HALF")
         else:
-            status.append("TEMP") # change when more info arrives
+            status.append(game["gameStatusText"].strip()) # change when more info arrives
     return status
         
 def assign_logos(matchups):

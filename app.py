@@ -21,7 +21,24 @@ def home():
 
 @app.route("/update")
 def update():
-    data = gen_randnum()
+    data = {}
+    games = get_livegames()
+    game_count = get_game_count(games)
+    matchups = get_matchups(games)
+    team_records = get_team_records(games)
+    livescores = get_livescores(games)
+    game_status = get_gamestatus(games)
+    logos = assign_logos(matchups)
+
+    data["games"] = games
+    data["game_count"] = game_count
+    data["matchups"] = matchups
+    data["team_records"] = team_records
+    data["livescores"] = livescores
+    data["game_status"] = game_status
+    data["game_count"] = game_count
+    data["logos"] = logos
+    
     return jsonify(data)
     
 

@@ -107,7 +107,7 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 100.1%;
+    font-size: 90%;
     flex: 5.5; /* why this num? trial and error :) */
 }
 .match_loc{
