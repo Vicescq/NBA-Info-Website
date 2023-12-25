@@ -2,13 +2,28 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <title>NBA General Web Scraping</title>
     <!-- FONT / Lexend 600 bold --> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+    <script>
+        $(document).ready(function(){
+            
+            function update_values(){
+                $.get("/update", function(data){
+                    $("#test").text(JSON.stringify(data))
+                })
+            }
+            setInterval(update_values, 2000)
+        })
+    </script>
 </head>
+
+
+
 <body>
     <h1>Header!</h1>
     
@@ -26,7 +41,8 @@
     </div>
     {% endfor %}
     {% endif %}
-    
+    <div id="test">0</div>
+
     
 
 </body>

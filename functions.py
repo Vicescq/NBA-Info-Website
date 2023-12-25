@@ -22,3 +22,8 @@ def get_matchups(games):
         matchups.append(curr_tuple)
     return matchups
 
+def gen_randnum():
+    url = "https://csrng.net/csrng/csrng.php?min=1&max=100"
+    response = requests.get(url)
+    return response.json()[0]["random"]
+
