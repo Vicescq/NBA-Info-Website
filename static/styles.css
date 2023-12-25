@@ -34,7 +34,7 @@ img{
 
 .match_container{
     display: flex;
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
     border-style: solid;
     border-radius: 10px;
     margin-top: 3%;
@@ -42,7 +42,7 @@ img{
     padding-bottom: 1.5%;
 }
 .match_container > div{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 
 
@@ -51,7 +51,7 @@ img{
     flex: 1;
 }
 .match_a > *{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .score_a{
     flex: 2;
@@ -62,7 +62,7 @@ img{
     flex: 1;
 }
 .misc_a > * {
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .logo_a{
     flex: 2;
@@ -73,7 +73,7 @@ img{
     flex: 1;
 }
 .abv_and_rec_a > *{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .abv_a{
     flex: 2;
@@ -99,7 +99,7 @@ img{
     flex: .25;
 }
 .match_mid > *{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .match_status{
     display: flex;
@@ -121,7 +121,7 @@ img{
     flex: 1;
 }
 .match_h > *{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .score_h{
     flex: 2;
@@ -132,7 +132,7 @@ img{
     flex: 1;
 }
 .misc_h > * {
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .logo_h{
     flex: 2;
@@ -144,7 +144,7 @@ img{
     flex: 1;
 }
 .abv_and_rec_h > *{
-    background-color: rgb(41, 32, 62);
+    background-color: rgb(30, 22, 47);
 }
 .abv_h{
     flex: 1;
