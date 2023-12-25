@@ -36,32 +36,23 @@
     {% else %}
     {% for i in range(game_count) %}
     <div class="match_container"> 
-        <div class="match_a"> {{matchups[i][0]}} </div>
-        <div class="match_mid"> @ </div>
-        <div class="match_h"> {{matchups[i][1]}} </div>
 
         <div class="match_container">
             <div class="match_a">
-                <div class="score_a">
-                    100
-                </div>
+                <div class="score_a"> {{livescores[i][0]}} </div>
                 <div class="misc_a">
                     <div class="logo_a">
                         <img src="..\static\images\logos\SAS.svg">
                     </div>
                     <div class="abv_and_rec_a">
-                        <div class="abv_a">
-                            ATL
-                        </div>
-                        <p class="rec_a">82-0</p>
+                        <div class="abv_a"> {{matchups[i][0]}} </div>
+                        <p class="rec_a"> {{team_records[i][0]}} </p>
                     </div>
                 </div>
             </div>
             
             <div class="match_mid">      
-                <div class="match_status">
-                    END
-                </div>
+                <div class="match_status"> {{game_status[i]}} </div>
                 <div class="match_loc">
                     <img id="arrow" src="..\static\images\right-arrow.png">
                 </div>
@@ -73,15 +64,11 @@
                         <img src="..\static\images\logos\OKC.svg">
                     </div>
                     <div class="abv_and_rec_h">
-                        <div class="abv_h">
-                            BOS
-                        </div>
-                        <p class="rec_h">82-0</p>
+                        <div class="abv_h"> {{matchups[i][1]}} </div>
+                        <p class="rec_h"> {{team_records[i][1]}} </p>
                     </div>
                 </div>
-                <div class="score_h">
-                    200
-                </div>
+                <div class="score_h"> {{livescores[i][1]}} </div>
             </div>
         </div>
     
