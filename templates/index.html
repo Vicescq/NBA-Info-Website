@@ -42,7 +42,12 @@
                 <div class="score_a"> {{livescores[i][0]}} </div>
                 <div class="misc_a">
                     <div class="logo_a">
-                        <img src="..\static\images\logos\SAS.svg">
+                        <img id="logo_a_{{i}}">
+                        <script>
+                            var logo_path = "..\\static\\images\\logos\\" + "{{matchups[i][0]}}" + ".svg"
+                            document.getElementById("logo_a_{{i}}").src=logo_path
+                        </script>
+
                     </div>
                     <div class="abv_and_rec_a">
                         <div class="abv_a"> {{matchups[i][0]}} </div>
@@ -61,7 +66,7 @@
             <div class="match_h"> 
                 <div class="misc_h">
                     <div class="logo_h">
-                        <img src="..\static\images\logos\OKC.svg">
+                        <img id="logo_h" src="..\static\images\logos\DEN.svg">
                     </div>
                     <div class="abv_and_rec_h">
                         <div class="abv_h"> {{matchups[i][1]}} </div>
