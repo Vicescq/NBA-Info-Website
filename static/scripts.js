@@ -24,11 +24,12 @@ $(document).ready(function(){
                 $("#rec_h_" + i).text(team_records[i][1])
                 
                 $("#match_status_" + i).text(game_status[i])
+                var color = "#1e162f"
                 if (game_status[i] == "END"){
-                    var color = "#590b0b";
+                    color = "#590b0b";
                 }
                 else if (gamestatus_split[i] == 3){
-                    var color = "#22272b";
+                    color = "#22272b";
                 }
                 $("#match_container_" + i).css("background-color", color);
                 $("#match_container_" + i + " div").css("background-color", color);
