@@ -1,45 +1,153 @@
 :root{
     font-family: 'Lexend', sans-serif;
     color: rgb(90, 167, 98);
-    font-size: 3em;
+    font-size: 2em;
 }
 
+
+h1{
+    padding-left: 7.5%;
+    padding-bottom: 2.5%;
+    margin-bottom: 0;
+}
 body{
-    background-color: rgb(71, 22, 49);
+    background-color: rgb(36, 21, 30);
+    margin: 10%;
 }
-
 div{
-    background-color: black;
+    background-color: black; /* dbg */
     text-align: center;
 }
-
-.background_container{
-    /* background-image: url(/static/images/test.jpg); */
-    padding: 2%;
+img{
+    width: 100%;
+    height: 100%;
 }
+
+
+#nogames{
+    background-color: rgb(110, 40, 40);
+    border-style: solid;
+    border-radius: 10px;
+    padding: 2.5%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
 
 .match_container{
     display: flex;
-    
+    background-color: rgb(30, 22, 47);
+    border-style: solid;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding-bottom: 1.5%;
 }
+.match_container div{
+    background-color: rgb(30, 22, 47);
+}
+
 
 .match_a{
-    width: 50%;
-    text-align: right;
-    padding-right: 1%;
-
+    display: flex;
+    flex: 1;
 }
+.score_a{
+    flex: 2;
+}
+.misc_a{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.logo_a{
+    flex: 2;
+}
+.abv_and_rec_a{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.abv_a{
+    flex: 2;
+}
+.rec_a{
+    flex: 1;
+    font-size: 0.6em; 
+    color: #999;
+    margin: 0;
+}
+.score_a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 250%;
+}
+
+
+
+.match_mid{
+    display: flex;
+    flex-direction: column;
+    flex: .25;
+}
+.match_status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90%;
+    flex: 5.5; /* why this num? trial and error :) */
+}
+.match_loc{
+    flex: 1;
+}
+#arrow{
+    width: 30%;
+}
+
 
 .match_h{
-    width: 50%;
-    text-align: left;
-    padding-left: 1%;
+    display: flex;
+    flex: 1;
+}
+.score_h{
+    flex: 2;
+}
+.misc_h{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.logo_h{
+    flex: 2;
 }
 
-.logos{
-    width: 10%;
-    height: 10%;
+.abv_and_rec_h{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
+.abv_h{
+    flex: 1;
+}
+.rec_h{
+    flex: 1;
+    font-size: 0.6em; 
+    color: #999;
+    margin: 0;
+}
+.score_h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 250%;
+}
+
+
+
+
+
+
 
 
 
