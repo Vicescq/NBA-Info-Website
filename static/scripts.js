@@ -8,7 +8,7 @@ $(document).ready(function(){
             var team_records = data.team_records;
             var livescores = data.livescores;
             var game_status = data.game_status;
-            var gamestatus_split = data.get_gamestatus_split
+            var gamestatus_split = data.gamestatus_split
             var logos = data.logos;
             
             for (var i = 0; i < game_count; i++) {
