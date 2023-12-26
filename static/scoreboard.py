@@ -52,13 +52,21 @@ def get_gamestatus(games):
         elif (game["gameStatusText"] == "Half"):
             status.append("HALF")
         else:
-            og_time = game["gameStatusText"].strip()
+            og_time = game["gameStatusText"].strip() # develop more
             if (len(og_time.split()) == 3):
                 status.append(game["gameStatusText"].strip())
             else:
                 status.append(game["gameStatusText"].strip())
     return status
 
+def get_gamestatus_split(games):
+    gamestatus_split = []
+    for game in games:
+        if (len(game["gameStatusText"].split()) == 3): # form of "10:30 pm ET"
+            gamestatus_split.append(3)
+        else:
+            gamestatus_split.append(0)
+    return gamestatus_split
 
         
 def assign_logos(matchups):
@@ -77,6 +85,7 @@ def package_data():
     team_records = get_team_records(games)
     livescores = get_livescores(games)
     game_status = get_gamestatus(games)
+    gamestatus_split = get_gamestatus_split(games)
     logos = assign_logos(matchups)
 
     data["games"] = games
@@ -85,6 +94,7 @@ def package_data():
     data["team_records"] = team_records
     data["livescores"] = livescores
     data["game_status"] = game_status
+    data["gamestatus_split"] = gamestatus_split
     data["game_count"] = game_count
     data["logos"] = logos
     return data

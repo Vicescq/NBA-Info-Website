@@ -9,8 +9,8 @@ def home():
     data = package_data()
     return render_template("index.html", **data)
 
-@app.route("/update")
-def update():
+@app.route("/update_home")
+def update_home():
     data = package_data()
     return jsonify(data)
     
