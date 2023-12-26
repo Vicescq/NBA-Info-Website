@@ -1,6 +1,6 @@
 $(document).ready(function(){
-            
-    function update_values(){
+          
+    function update(){
         $.get("/update", function(data){
             console.log(data)
             var game_count = data.game_count;
@@ -25,5 +25,5 @@ $(document).ready(function(){
             }
         })
     }
-    setInterval(update_values, 2000)
+    setInterval(update, 2000)
 })

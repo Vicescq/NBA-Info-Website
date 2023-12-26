@@ -1,4 +1,5 @@
-import requests
+from datetime import datetime
+import requests, pytz
 
 def get_livegames():
     url = "https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json"
@@ -51,8 +52,14 @@ def get_gamestatus(games):
         elif (game["gameStatusText"] == "Half"):
             status.append("HALF")
         else:
-            status.append(game["gameStatusText"].strip()) # change when more info arrives
+            og_time = game["gameStatusText"].strip()
+            if (len(og_time.split()) == 3):
+                status.append(game["gameStatusText"].strip())
+            else:
+                status.append(game["gameStatusText"].strip())
     return status
+
+
         
 def assign_logos(matchups):
     logos = []
