@@ -5,10 +5,44 @@
 }
 
 
+@keyframes h1_slide{
+    0% {
+        transform: translateX(-1000px);
+    }
+    40%{
+        transform: translateX(140px);
+    }
+    60%{
+        transform: translateX(-100px);
+    }
+
+    80%{
+        transform: translateX(100px);
+    }
+    85%{
+        transform: translateX(-20px);
+    }
+    90%{
+        transform: translateX(20px);
+    }
+    95%{
+        transform: translateX(-10px);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
 h1{
     padding-left: 7.5%;
     padding-bottom: 2.5%;
     margin-bottom: 0;
+
+    animation-name: h1_slide;
+    animation-duration: 2.25s;
+    animation-timing-function: ease-in-out;
 }
 body{
     background-color: rgb(36, 21, 30);
@@ -85,7 +119,6 @@ img{
 }
 
 
-
 .match_mid{
     display: flex;
     flex-direction: column;
@@ -142,13 +175,3 @@ img{
     align-items: center;
     font-size: 250%;
 }
-
-
-
-
-
-
-
-
-
-

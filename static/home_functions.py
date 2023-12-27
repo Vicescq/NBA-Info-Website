@@ -63,9 +63,8 @@ def get_gamestatus(games):
             status.append("HALF")
         else: # when status is the game clock or starting date
             if (len(status_text.split()) == 3): # convert ET to MT
-                pass
-            else:
-                status.append(status_text)
+                status_text = convert_PT_to_MT(status_text)
+            status.append(status_text)
     return status
 
 def convert_PT_to_MT(pt_str):
@@ -77,7 +76,6 @@ def convert_PT_to_MT(pt_str):
     
     pt_str = pt_str.split()[0] + " " + pt_str.split()[1]
     dt_pt = datetime.strptime(pt_str, "%I:%M %p")
-    dt_pt = pt_tz.localize(dt_pt)
     
     # need to provide Y/M/D due to time offsets happening, stack overflow has a lot of cases where pytz "bugs out"
     dt_curr = datetime.now()
