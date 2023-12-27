@@ -61,7 +61,7 @@
         {% endfor %}
     {% endif %}
     <script>
-        var jsvalid_data = JSON.parse('{{ data|tojson|safe }}')
+        var jsvalid_data = {{ data|tojson|safe }}
         set_homevalues(jsvalid_data)
     </script>
 </body>
