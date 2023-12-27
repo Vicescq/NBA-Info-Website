@@ -14,9 +14,6 @@
     
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
 </head>
-
-
-
 <body>
     <h1>NBA Games</h1>
     
@@ -26,12 +23,12 @@
     {% else %}
         {% for i in range(game_count) %}
             <div class="match_container" id="match_container_{{i}}">
+                
                 <div class="match_a">
                     <div class="score_a" id="score_a_{{i}}"></div>
                     <div class="misc_a">
                         <div class="logo_a">
                             <img id="logo_a_{{i}}">
-
                         </div>
                         <div class="abv_and_rec_a">
                             <div class="abv_a" id="abv_a_{{i}}"></div>
@@ -51,7 +48,6 @@
                     <div class="misc_h">
                         <div class="logo_h">
                             <img id="logo_h_{{i}}">
-
                         </div>
                         <div class="abv_and_rec_h">
                             <div class="abv_h" id="abv_h_{{i}}"></div>
@@ -60,21 +56,13 @@
                     </div>
                     <div class="score_h" id="score_h_{{i}}"> </div>
                 </div>
+
             </div>
-        
-        
         {% endfor %}
     {% endif %}
     <script>
-        var jsvalid_data = {{data | tojson | safe}}
+        var jsvalid_data =  {{ data|tojson|safe }}
         set_homevalues(jsvalid_data)
     </script>
-    
-    
-    
-
-
-    
-
 </body>
 </html>

@@ -30,8 +30,10 @@ function set_homevalues(data){
         }
         $("#match_container_" + i).css("background-color", color);
         $("#match_container_" + i + " div").css("background-color", color);
-
     }
+}
+
+function set_scores(id_num){
     
 }
 
