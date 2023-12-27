@@ -88,7 +88,7 @@ def package_data():
     gamestatus_split = get_gamestatus_split(games)
     logos = assign_logos(matchups)
 
-    data["games"] = games
+    
     data["game_count"] = game_count
     data["matchups"] = matchups
     data["team_records"] = team_records

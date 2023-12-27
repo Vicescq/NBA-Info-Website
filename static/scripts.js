@@ -23,7 +23,7 @@ function update_home(){
             
             $("#match_status_" + i).text(game_status[i])
             var color = "#1e162f"
-            if (game_status[i] == "END"){
+            if ((game_status[i] == "END") || (game_status[i] == "Final/OT")){ // ++
                 color = "#590b0b";
             }
             else if (gamestatus_split[i] == 3){
