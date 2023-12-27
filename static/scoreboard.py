@@ -47,26 +47,26 @@ def get_livescores(games):
 def get_gamestatus(games):
     status = []
     for game in games:
-        if (game["gameStatusText"].strip() == "Final"):
+        status_text = game["gameStatusText"].strip()
+        if ((status_text == "Final") or (status_text == "Final/OT")):
             status.append("END")
-        elif (game["gameStatusText"] == "Half"):
+        elif (status_text == "Half"):
             status.append("HALF")
-        else:
-            og_time = game["gameStatusText"].strip() # develop more
-            if (len(og_time.split()) == 3):
-                status.append(game["gameStatusText"].strip())
-            else:
-                status.append(game["gameStatusText"].strip())
+        else: # when status is the game clock or starting date
+            status.append(status_text)
     return status
 
-def get_gamestatus_split(games):
-    gamestatus_split = []
-    for game in games:
-        if (len(game["gameStatusText"].split()) == 3): # form of "10:30 pm ET"
-            gamestatus_split.append(3)
+def get_gamestatus_colour(game_status, game_count):
+    gamestatus_colour = []
+    for i in range(game_count):
+        status_text = game_status[i]
+        if (len(status_text.split()) == 3): # form of ["10:30", "pm", "ET"]
+            gamestatus_colour.append("#22272b") # future game
+        elif (status_text == "END"):
+            gamestatus_colour.append("#590b0b") # finished game
         else:
-            gamestatus_split.append(0)
-    return gamestatus_split
+            gamestatus_colour.append("#1e162f") # live game
+    return gamestatus_colour
 
         
 def assign_logos(matchups):
@@ -85,16 +85,15 @@ def package_data():
     team_records = get_team_records(games)
     livescores = get_livescores(games)
     game_status = get_gamestatus(games)
-    gamestatus_split = get_gamestatus_split(games)
+    gamestatus_colour = get_gamestatus_colour(game_status, game_count)
     logos = assign_logos(matchups)
 
-    
     data["game_count"] = game_count
     data["matchups"] = matchups
     data["team_records"] = team_records
     data["livescores"] = livescores
     data["game_status"] = game_status
-    data["gamestatus_split"] = gamestatus_split
+    data["gamestatus_colour"] = gamestatus_colour
     data["game_count"] = game_count
     data["logos"] = logos
     return data
