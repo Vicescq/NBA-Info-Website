@@ -35,6 +35,41 @@
 }
 
 
+@keyframes score_animation{
+    0% {
+        transform: translateY(-100px);
+    }
+    40%{
+        transform: translateY(140px);
+    }
+    60%{
+        transform: translateY(-100px);
+    }
+
+    80%{
+        transform: translateY(100px);
+    }
+    85%{
+        transform: translateY(-20px);
+    }
+    90%{
+        transform: translateY(20px);
+    }
+    95%{
+        transform: translateY(-10px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}
+.changed_score{
+    animation-name: score_animation;
+    animation-duration: 2.25s;
+    animation-timing-function: ease-in-out;
+}
+
+
 h1{
     padding-left: 7.5%;
     padding-bottom: 2.5%;
@@ -143,9 +178,6 @@ img{
     display: flex;
     flex: 1;
 }
-.score_h{
-    flex: 2;
-}
 .misc_h{
     display: flex;
     flex-direction: column;
@@ -171,6 +203,7 @@ img{
 }
 .score_h{
     display: flex;
+    flex: 2;
     justify-content: center;
     align-items: center;
     font-size: 250%;
