@@ -18,12 +18,12 @@ function set_homevalues(data){
 
 function set_scores(i, livescores){
     animate_scores(i, livescores)
-    $("#score_a_" + i).text(livescores[i][0])
-    $("#score_h_" + i).text(livescores[i][1])
+    $("#score_atxt_" + i).text(livescores[i][0])
+    $("#score_htxt_" + i).text(livescores[i][1])
 }
 function animate_scores(i, livescores){
-    var $score_a = $("#score_a_" + i)
-    var $score_h = $("#score_h_" + i)
+    var $score_a = $("#score_atxt_" + i)
+    var $score_h = $("#score_htxt_" + i)
     // console.log($score_a.text())
     // console.log(livescores[i][0])
 
@@ -34,7 +34,6 @@ function animate_scores(i, livescores){
         }, 2600)
     }
     if ($score_h.text() != livescores[i][1]){
-        
         $score_h.addClass("changed_score")
         setTimeout(function(){
             $score_h.removeClass("changed_score")

@@ -37,6 +37,9 @@
 
 @keyframes score_animation{
     0% {
+        transform: translateY(0px);
+    }
+    25% {
         transform: translateY(-100px);
     }
     40%{
@@ -121,9 +124,6 @@ img{
     display: flex;
     flex: 1;
 }
-.score_a{
-    flex: 2;
-}
 .misc_a{
     display: flex;
     flex-direction: column;
@@ -148,10 +148,12 @@ img{
 }
 .score_a{
     display: flex;
+    flex: 2;
     justify-content: center;
     align-items: center;
     font-size: 250%;
 }
+
 
 
 .match_mid{
