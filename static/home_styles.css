@@ -33,8 +33,6 @@
         transform: translateX(0);
     }
 }
-
-
 @keyframes score_animation{
     0% {
         transform: translateY(0px);
@@ -153,7 +151,6 @@ img{
     align-items: center;
     font-size: 250%;
 }
-
 
 
 .match_mid{

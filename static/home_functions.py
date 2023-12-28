@@ -9,7 +9,19 @@ def get_livegames():
     response = requests.get(url)
     response_json = response.json()
     games = response_json["scoreboard"]["games"]
+    games = make_stable(games)
     return games
+
+def make_stable(games):
+    """
+    The API request constantly moves around finished games in its JSON, interfering the animation logic in other files. Therefore this function stabalizes each match in its container in the site
+    
+    sort via game ids, API listed them as sequential, the higher -> the later the game starts
+    eg. "gameId": "0022300418"   &    "gameId": "0022300419"
+    """
+    stable_list_of_games = sorted(games, key=lambda game: game["gameId"])
+    return stable_list_of_games
+
 
 def get_game_count(games):
     return len(games)
@@ -133,4 +145,3 @@ def package_data():
     data["game_count"] = game_count
     data["logos"] = logos
     return data
-

@@ -21,11 +21,10 @@ function set_scores(i, livescores){
     $("#score_atxt_" + i).text(livescores[i][0])
     $("#score_htxt_" + i).text(livescores[i][1])
 }
+
 function animate_scores(i, livescores){
     var $score_a = $("#score_atxt_" + i)
     var $score_h = $("#score_htxt_" + i)
-    // console.log($score_a.text())
-    // console.log(livescores[i][0])
 
     if ($score_a.text() != livescores[i][0]){
         $score_a.addClass("changed_score")
@@ -38,7 +37,6 @@ function animate_scores(i, livescores){
         setTimeout(function(){
             $score_h.removeClass("changed_score")
         }, 2600)
-        
     }
 }
 
@@ -59,7 +57,6 @@ function set_status_and_color(i, game_status, gamestatus_colour){
     $("#match_container_" + i).css("background-color", gamestatus_colour[i]);
     $("#match_container_" + i + " div").css("background-color", gamestatus_colour[i]);
 }
-
 
 function update_home(){
     $.get("/update_home", set_homevalues)
