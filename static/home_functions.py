@@ -22,7 +22,6 @@ def make_stable(games):
     stable_list_of_games = sorted(games, key=lambda game: game["gameId"])
     return stable_list_of_games
 
-
 def get_game_count(games):
     return len(games)
 
