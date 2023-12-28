@@ -1,4 +1,5 @@
-function set_homevalues(data){
+function set_homevalues(data, setup = 0){
+    // setup is a boolean val that prevents ALL scores from animating on first load
     console.log(data)
     var game_count = data.game_count;
     var matchups = data.matchups;
@@ -8,35 +9,36 @@ function set_homevalues(data){
     var gamestatus_colour = data.gamestatus_colour
     var logos = data.logos;
     for (var i = 0; i < game_count; i++) {
-        set_scores(i, livescores)
+        set_scores(i, livescores, setup)
         set_logos(i, logos)
         set_name_rec(i, matchups, team_records)
         set_status_and_color(i, game_status, gamestatus_colour)
-        
     }
 }
 
-function set_scores(i, livescores){
-    animate_scores(i, livescores)
+function set_scores(i, livescores, setup){
+    animate_scores(i, livescores, setup)
     $("#score_atxt_" + i).text(livescores[i][0])
     $("#score_htxt_" + i).text(livescores[i][1])
 }
 
-function animate_scores(i, livescores){
-    var $score_a = $("#score_atxt_" + i)
-    var $score_h = $("#score_htxt_" + i)
-
-    if ($score_a.text() != livescores[i][0]){
-        $score_a.addClass("changed_score")
-        setTimeout(function(){
-            $score_a.removeClass("changed_score")
-        }, 2600)
-    }
-    if ($score_h.text() != livescores[i][1]){
-        $score_h.addClass("changed_score")
-        setTimeout(function(){
-            $score_h.removeClass("changed_score")
-        }, 2600)
+function animate_scores(i, livescores, setup){
+    if (!setup){
+        var $score_a = $("#score_atxt_" + i)
+        var $score_h = $("#score_htxt_" + i)
+    
+        if ($score_a.text() != livescores[i][0]){
+            $score_a.addClass("changed_score")
+            setTimeout(function(){
+                $score_a.removeClass("changed_score")
+            }, 2600)
+        }
+        if ($score_h.text() != livescores[i][1]){
+            $score_h.addClass("changed_score")
+            setTimeout(function(){
+                $score_h.removeClass("changed_score")
+            }, 2600)
+        }
     }
 }
 

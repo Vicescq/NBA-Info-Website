@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='home_scripts.js') }}"></script>
-    <link rel="stylesheet" href="{{url_for('static', filename='home_styles.css')}}">
-    
-    <!-- FONT / Lexend 600 bold --> 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap" rel="stylesheet">
-    
-    <title>NBA General Web Scraping</title>
-</head>
-<body>
-    <h1 class="abcde">NBA Games</h1>
+{% extends "base.html" %}
+
+{% block head_elems %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='home_scripts.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='home_styles.css')}}">
+{% endblock %}
+
+{% block content %}
+    <h1>NBA Games</h1>
     
     {% if not game_count %}
     <div id="nogames"> No games today! </div>
@@ -67,7 +58,7 @@
     {% endif %}
     <script>
         var jsvalid_data = {{ data|tojson|safe }}
-        set_homevalues(jsvalid_data)
+        set_homevalues(jsvalid_data, 1)
     </script>
-</body>
-</html>
+{% endblock %}
+
