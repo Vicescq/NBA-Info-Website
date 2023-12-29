@@ -1,4 +1,4 @@
-function set_homevalues(data, setup = 0){
+function set_homevalues(data, setup){
     // setup is a boolean val that prevents ALL scores from animating on first load
     console.log(data)
     var game_count = data.game_count;
@@ -23,7 +23,7 @@ function set_scores(i, livescores, setup){
 }
 
 function animate_scores(i, livescores, setup){
-    if (!setup){
+    if (setup == 0){
         var $score_a = $("#score_atxt_" + i)
         var $score_h = $("#score_htxt_" + i)
     
@@ -40,6 +40,7 @@ function animate_scores(i, livescores, setup){
             }, 2600)
         }
     }
+    
 }
 
 function set_logos(i, logos){
@@ -61,7 +62,9 @@ function set_status_and_color(i, game_status, gamestatus_colour){
 }
 
 function update_home(){
-    $.get("/update_home", set_homevalues)
+    $.get("/update_home", function(data){
+        set_homevalues(data, 0)
+    })
 }
 
 $(document).ready(function(){
