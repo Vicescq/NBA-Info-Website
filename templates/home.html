@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block head_elems %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='/js/home_scripts.js') }}"></script>
+<link rel="stylesheet" href="{{url_for('static', filename='/css/home_styles.css')}}">
+{% endblock %}
+
+{% block content %}
+    <h1>NBA Games</h1>
+    
+    {% if not game_count %}
+    <div id="nogames"> No games today! </div>
+
+    {% else %}
+        {% for i in range(game_count) %}
+            <div class="match_container" id="match_container_{{i}}">
+                
+                <div class="match_a">
+                    <div class="score_a" id="score_a_{{i}}">
+                        <p id="score_atxt_{{i}}"></p>
+                    </div>
+                    <div class="misc_a">
+                        <div class="logo_a">
+                            <img id="logo_a_{{i}}">
+                        </div>
+                        <div class="abv_and_rec_a">
+                            <div class="abv_a" id="abv_a_{{i}}"></div>
+                            <p class="rec_a" id="rec_a_{{i}}"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="match_mid">      
+                    <div class="match_status" id="match_status_{{i}}"></div>
+                    <div class="match_loc">
+                        <img id="arrow" src="..\static\images\right-arrow.png">
+                    </div>
+                </div>
+                
+                <div class="match_h"> 
+                    <div class="misc_h">
+                        <div class="logo_h">
+                            <img id="logo_h_{{i}}">
+                        </div>
+                        <div class="abv_and_rec_h">
+                            <div class="abv_h" id="abv_h_{{i}}"></div>
+                            <p class="rec_h" id="rec_h_{{i}}">  </p>
+                        </div>
+                    </div>
+                    <div class="score_h" id="score_h_{{i}}"> 
+                        <p id="score_htxt_{{i}}"></p>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% endif %}
+    <script>
+        var jsvalid_data = {{ data|tojson|safe }}
+        set_homevalues(jsvalid_data, 1)
+    </script>
+{% endblock %}
+
