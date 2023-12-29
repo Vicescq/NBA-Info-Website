@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{{url_for('static', filename='/css/home_styles.css')}}">
 {% endblock %}
 
+{% block eye_mini %} 
+<a href=""><img src="..//static//images//eye.svg"></a> 
+<a href=""><img src="..//static//images//minimize.svg"></a> 
+{% endblock %}
 {% block content %}
     <h1>NBA Games</h1>
     
@@ -34,7 +38,8 @@
                 <div class="match_mid">      
                     <div class="match_status" id="match_status_{{i}}"></div>
                     <div class="match_loc">
-                        <img id="arrow" src="..\static\images\right-arrow.png">
+                        <!-- <img id="arrow" src="..\static\images\right-arrow.png"> -->
+                        <img id="at-loc" src="..\static\images\at-loc.svg">
                     </div>
                 </div>
                 

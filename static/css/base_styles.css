@@ -28,15 +28,15 @@ img{
 .navbar ul{
     margin: 0;
     list-style-type: none;
-    padding: 1%;
+    padding: .5%;
     display: flex;
 }
 .navbar a{
     margin: 0;
     padding: 1%;
+    padding-inline: 2%;
     color: rgb(90, 167, 98);
     text-decoration: none;
-    
 }
 #second_half{
     justify-content: flex-end;
