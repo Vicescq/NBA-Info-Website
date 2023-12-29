@@ -17,6 +17,7 @@ img{
 .navbar{
     top: 0;
     background-color: rgb(39, 34, 39);
+    position: sticky;
     
 }
 .navbar ul{
