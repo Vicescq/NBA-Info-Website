@@ -57,8 +57,8 @@ function set_name_rec(i, matchups, team_records){
 
 function set_status_and_color(i, game_status, gamestatus_colour){
     $("#match_status_" + i).text(game_status[i])
-    $("#match_container_" + i).css("background-color", gamestatus_colour[i]);
-    $("#match_container_" + i + " div").css("background-color", gamestatus_colour[i]);
+    $("#match_container_wrapper" + i).css("background-color", gamestatus_colour[i]);
+    $("#match_container_wrapper" + i + " div").css("background-color", gamestatus_colour[i]);
 }
 
 function update_home(){
