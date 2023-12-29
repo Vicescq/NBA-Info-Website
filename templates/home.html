@@ -18,46 +18,48 @@
 
     {% else %}
         {% for i in range(game_count) %}
-            <div class="match_container" id="match_container_{{i}}">
-                
-                <div class="match_a">
-                    <div class="score_a" id="score_a_{{i}}">
-                        <p id="score_atxt_{{i}}"></p>
-                    </div>
-                    <div class="misc_a">
-                        <div class="logo_a">
-                            <img id="logo_a_{{i}}">
+        <div class="match_container" id="match_container_{{i}}">
+                <a href="" id="match_link">
+                <div class="match_container_wrapper">
+                    <div class="match_a">
+                        <div class="score_a" id="score_a_{{i}}">
+                            <p id="score_atxt_{{i}}"></p>
                         </div>
-                        <div class="abv_and_rec_a">
-                            <div class="abv_a" id="abv_a_{{i}}"></div>
-                            <p class="rec_a" id="rec_a_{{i}}"></p>
+                        <div class="misc_a">
+                            <div class="logo_a">
+                                <img id="logo_a_{{i}}">
+                            </div>
+                            <div class="abv_and_rec_a">
+                                <div class="abv_a" id="abv_a_{{i}}"></div>
+                                <p class="rec_a" id="rec_a_{{i}}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="match_mid">      
+                        <div class="match_status" id="match_status_{{i}}"></div>
+                        <div class="match_loc">
+                            <!-- <img id="arrow" src="..\static\images\right-arrow.png"> -->
+                            <img id="at-loc" src="..\static\images\at-loc.svg">
+                        </div>
+                    </div>
+                    
+                    <div class="match_h"> 
+                        <div class="misc_h">
+                            <div class="logo_h">
+                                <img id="logo_h_{{i}}">
+                            </div>
+                            <div class="abv_and_rec_h">
+                                <div class="abv_h" id="abv_h_{{i}}"></div>
+                                <p class="rec_h" id="rec_h_{{i}}">  </p>
+                            </div>
+                        </div>
+                        <div class="score_h" id="score_h_{{i}}"> 
+                            <p id="score_htxt_{{i}}"></p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="match_mid">      
-                    <div class="match_status" id="match_status_{{i}}"></div>
-                    <div class="match_loc">
-                        <!-- <img id="arrow" src="..\static\images\right-arrow.png"> -->
-                        <img id="at-loc" src="..\static\images\at-loc.svg">
-                    </div>
-                </div>
-                
-                <div class="match_h"> 
-                    <div class="misc_h">
-                        <div class="logo_h">
-                            <img id="logo_h_{{i}}">
-                        </div>
-                        <div class="abv_and_rec_h">
-                            <div class="abv_h" id="abv_h_{{i}}"></div>
-                            <p class="rec_h" id="rec_h_{{i}}">  </p>
-                        </div>
-                    </div>
-                    <div class="score_h" id="score_h_{{i}}"> 
-                        <p id="score_htxt_{{i}}"></p>
-                    </div>
-                </div>
-
+            </a>
             </div>
         {% endfor %}
     {% endif %}

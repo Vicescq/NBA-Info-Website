@@ -95,8 +95,19 @@ h1{
     margin-bottom: 3%;
     padding-bottom: 1.5%;
 }
+.match_container_wrapper{
+    display: flex;
+    background-color: rgb(30, 22, 47);
+
+
+}
 .match_container div{
     background-color: rgb(30, 22, 47);
+}
+#match_link{
+    text-decoration: none;
+    color: rgb(90, 167, 98);
+    width: 100%;
 }
 
 
