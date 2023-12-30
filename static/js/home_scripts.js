@@ -18,14 +18,14 @@ function set_homevalues(data, setup){
 
 function set_scores(i, livescores, setup){
     animate_scores(i, livescores, setup)
-    $("#score_atxt_" + i).text(livescores[i][0])
-    $("#score_htxt_" + i).text(livescores[i][1])
+    $("#score_a_" + i).text(livescores[i][0])
+    $("#score_h_" + i).text(livescores[i][1])
 }
 
 function animate_scores(i, livescores, setup){
     if (setup == 0){
-        var $score_a = $("#score_atxt_" + i)
-        var $score_h = $("#score_htxt_" + i)
+        var $score_a = $("#score_a_" + i)
+        var $score_h = $("#score_h_" + i)
     
         if ($score_a.text() != livescores[i][0]){
             $score_a.addClass("changed_score")

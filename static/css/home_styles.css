@@ -126,7 +126,8 @@ h1{
     flex: 1;
 }
 .abv_a{
-    flex: 2;
+    flex: 1;
+    margin: 0;
 }
 .rec_a{
     flex: 1;
@@ -134,7 +135,7 @@ h1{
     color: #999;
     margin: 0;
 }
-.score_a{
+.score_a_wrapper{
     display: flex;
     flex: 2;
     justify-content: center;
@@ -183,6 +184,7 @@ h1{
 }
 .abv_h{
     flex: 1;
+    margin: 0;
 }
 .rec_h{
     flex: 1;
@@ -190,7 +192,7 @@ h1{
     color: #999;
     margin: 0;
 }
-.score_h{
+.score_h_wrapper{
     display: flex;
     flex: 2;
     justify-content: center;
