@@ -21,62 +21,51 @@
 </li>
 <li><a href=""><img src="..//static//images//minimize.svg"></a> </li>
 {% endblock %}
+
 {% block content %}
-    <h1>NBA Games</h1>
+<h1>NBA Games</h1>
+{% for i in range(game_count) %}
+
+<div class="match_container_wrapper" id="match_container_wrapper{{i}}">
     
-    {% if not game_count %}
-    <div id="nogames"> No games today! </div>
-
-    {% else %}
-        {% for i in range(game_count) %}
-
-        <div class="match_container_wrapper" id="match_container_wrapper{{i}}">
-                <a href="" id="match_link">
-                <div class="match_container">
-                    <div class="match_a">
-                        <div class="score_a_wrapper">
-                            <p id="score_a_{{i}}"></p>
-                        </div>
-                        <div class="misc_a">
-                            <div class="logo_a">
-                                <img id="logo_a_{{i}}">
-                            </div>
-                            <div class="abv_and_rec_a">
-                                <p class="abv_a" id="abv_a_{{i}}"></p>
-                                <p class="rec_a" id="rec_a_{{i}}"></p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="match_mid">      
-                        <div class="match_status" id="match_status_{{i}}"></div>
-                        <div class="match_loc">
-                            <img id="at-loc" src="..\static\images\at-loc.svg">
-                        </div>
-                    </div>
-                    
-                    <div class="match_h"> 
-                        <div class="misc_h">
-                            <div class="logo_h">
-                                <img id="logo_h_{{i}}">
-                            </div>
-                            <div class="abv_and_rec_h">
-                                <p class="abv_h" id="abv_h_{{i}}"></p>
-                                <p class="rec_h" id="rec_h_{{i}}">  </p>
-                            </div>
-                        </div>
-                        <div class="score_h_wrapper"> 
-                            <p id="score_h_{{i}}"></p>
-                        </div>
+    <a href="" id="match_link">
+        <div class="match_container">
+            
+            <div class="match_a">
+                <div class="score_a_wrapper"><p id="score_a_{{i}}"></p></div>
+                <div class="misc_a">
+                    <div class="logo_a"><img id="logo_a_{{i}}"></div>
+                    <div class="abv_and_rec_a">
+                        <p class="abv_a" id="abv_a_{{i}}"></p>
+                        <p class="rec_a" id="rec_a_{{i}}"></p>
                     </div>
                 </div>
-            </a>
             </div>
-        {% endfor %}
-    {% endif %}
-    <script>
-        var jsvalid_data = {{ data|tojson|safe }}
-        set_homevalues(jsvalid_data, 1)
-    </script>
+                    
+            <div class="match_mid">      
+                <div class="match_status" id="match_status_{{i}}"></div>
+                <div class="match_loc"><img id="at-loc" src="..\static\images\at-loc.svg"></div>
+            </div>
+                    
+            <div class="match_h"> 
+                <div class="misc_h">
+                    <div class="logo_h"><img id="logo_h_{{i}}"></div>
+                    <div class="abv_and_rec_h">
+                        <p class="abv_h" id="abv_h_{{i}}"></p>
+                        <p class="rec_h" id="rec_h_{{i}}"> </p>
+                    </div>
+                </div>
+                <div class="score_h_wrapper"> <p id="score_h_{{i}}"></p></div>
+            </div>
+            
+        </div>
+    </a>
+
+</div>
+{% endfor %}
+<script>
+    var jsvalid_data = {{ data|tojson|safe }}
+    set_homevalues(jsvalid_data, 1)
+</script>
 {% endblock %}
 

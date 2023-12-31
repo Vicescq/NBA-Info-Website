@@ -6,8 +6,12 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     data = package_data()
-    abca = 0
-    return render_template("home.html", **data, data=data, abca=abca)
+    if data["game_count"]:
+        return render_template("home.html", **data, data=data)
+    elif not data["game_count"]:
+        return render_template("base.html", no_games=1)
+    else:
+        print("API Error!")
 
 @app.route("/update_home")
 def update_home():

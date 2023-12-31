@@ -26,5 +26,11 @@
         </ul>
     </nav>
     {% block content %}{% endblock %}
+    
+    {% if no_games %}
+    <div id="nogames"> No games today! </div>
+    {% endif %}
+    
+    
 </body>
 </html>
