@@ -64,6 +64,24 @@
 }
 
 
+/* .eye_dropdown_wrapper{
+    
+} */
+.eye_dropdown{
+    background-color: rgb(45, 28, 52);
+    position: absolute;
+    flex-direction: column;
+    cursor: pointer;
+}
+.eye_dropdown li{
+    background-color: rgb(45, 28, 52);
+    font-size: 50%;
+    list-style: none;
+    padding: 15px 15px;
+}
+
+
+
 h1{
     margin: 10%;
     padding-left: 7.5%;
@@ -97,6 +115,7 @@ h1{
 .match_container{
     display: flex;
     background-color: rgb(30, 22, 47);
+    padding-inline: 5%;
 }
 .match_container_wrapper div{
     background-color: rgb(30, 22, 47);
