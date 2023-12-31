@@ -24,7 +24,7 @@ div{
     padding-bottom: .25%;
     display: flex;
 }
-.navbar div{
+.navbar div:not(.eye_dropdown_body){
     display: flex;
     flex: 1;
 }

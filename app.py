@@ -6,7 +6,8 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     data = package_data()
-    return render_template("home.html", **data, data=data)
+    abca = 0
+    return render_template("home.html", **data, data=data, abca=abca)
 
 @app.route("/update_home")
 def update_home():

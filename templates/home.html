@@ -7,15 +7,17 @@
 {% endblock %}
 
 {% block eye_mini %} 
-<li class="eye_dropdown_wrapper">
-    <a href="javascript:">
+<li class="eye_dropdown">
     <img src="..//static//images//eye.svg"></a>
-    <ul class="eye_dropdown">
-        <li> ABC </li>
-        <li> ABC </li>
-        <li> ABC </li>
-        <li> ABC </li>
-    </ul>
+    <div class="eye_dropdown_body">
+        <div class="eye_settings">
+            <div class="eye1_wrapper"><a href=""><u>All</u></a></div>
+            <div class="eye2_wrapper"><a href=""><u>None</u></a></div>
+        </div>
+        <a href="">ABC</a>
+        <a href="">ABC</a>
+        <a href="">ABC</a>
+    </div>
 </li>
 <li><a href=""><img src="..//static//images//minimize.svg"></a> </li>
 {% endblock %}
@@ -27,6 +29,7 @@
 
     {% else %}
         {% for i in range(game_count) %}
+
         <div class="match_container_wrapper" id="match_container_wrapper{{i}}">
                 <a href="" id="match_link">
                 <div class="match_container">
