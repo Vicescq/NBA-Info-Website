@@ -40,7 +40,6 @@ function animate_scores(i, livescores, setup){
             }, 2600)
         }
     }
-    
 }
 
 function set_logos(i, logos){
@@ -65,6 +64,35 @@ function update_home(){
     $.get("/update_home", function(data){
         set_homevalues(data, 0)
     })
+}
+
+function toggle_scores(index, all_or_none){
+    if (all_or_none == "T"){
+        for (var i; i < index; i++){
+            var score_a = document.getElementById("score_a_" + i)
+            var score_h = document.getElementById("score_h_" + i)
+            if (score_a.style.display == "none"){
+                score_a.style.display = "block"
+                score_h.style.display = "block"
+            }
+            else{
+                score_a.style.display = "none"
+                score_h.style.display = "none"
+            }
+        }
+    }
+    if (all_or_none == "F"){
+        var score_a = document.getElementById("score_a_" + index)
+        var score_h = document.getElementById("score_h_" + index)
+        if (score_a.style.display == "none"){
+            score_a.style.display = "block"
+            score_h.style.display = "block"
+        }
+        else{
+            score_a.style.display = "none"
+            score_h.style.display = "none"
+        }
+    }
 }
 
 $(document).ready(function(){
