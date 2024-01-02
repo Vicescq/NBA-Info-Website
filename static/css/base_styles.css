@@ -27,6 +27,7 @@ div{
     background-color: rgb(45, 28, 52);
     position: sticky;
     top: 0;
+    z-index: 10; /* arbitrary value */
 }
 .navbar ul{
     margin: 0;

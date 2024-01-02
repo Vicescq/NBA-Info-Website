@@ -1,11 +1,11 @@
 function set_homevalues(data, setup){
     // setup is a boolean val that prevents ALL scores from animating on first load
     console.log(data)
-    var game_count = data.game_count;
-    var matchups = data.matchups;
-    var team_records = data.team_records;
-    var livescores = data.livescores;
-    var game_status = data.game_status;
+    var game_count = data.game_count
+    var matchups = data.matchups
+    var team_records = data.team_records
+    var livescores = data.livescores
+    var game_status = data.game_status
     var gamestatus_colour = data.gamestatus_colour
     var logos = data.logos;
     for (var i = 0; i < game_count; i++) {
@@ -13,6 +13,7 @@ function set_homevalues(data, setup){
         set_logos(i, logos)
         set_name_rec(i, matchups, team_records)
         set_status_and_color(i, game_status, gamestatus_colour)
+        set_eye_scores(i, matchups)
     }
 }
 
@@ -60,57 +61,16 @@ function set_status_and_color(i, game_status, gamestatus_colour){
     $("#match_container_wrapper" + i + " div").css("background-color", gamestatus_colour[i]);
 }
 
-function array_equality(arr) {
-    return new Set(arr).size == 1;
+function set_eye_scores(i, matchups){
+    var eye_matchup_str = matchups[i][0] + " vs " + matchups[i][1]
+    $("#eye_matchups_" + i).text(eye_matchup_str)
 }
 
 function toggle_scores(id_char, game_count){
     if (id_char == "NULL"){ // user clicked on All
-        
-        // documenting states of each score element
-        var element_states = []
-        for (var i = 0; i < game_count; i++){
-            var score_a = document.getElementById("score_a_" + i)
-            var score_h = document.getElementById("score_h_" + i)
-            if (score_a.style.display == "none"){
-                element_states.push(0)
-            }
-            else{
-                element_states.push(1)        
-            }
-        }
-
-        // if all are in same state
-        if (array_equality(element_states)){
-            for (var i = 0; i < game_count; i++){
-                var score_a = document.getElementById("score_a_" + i)
-                var score_h = document.getElementById("score_h_" + i)
-                if (score_a.style.display == "none"){
-                    score_a.style.display = "block"
-                    score_h.style.display = "block"
-                }
-                else{
-                    score_a.style.display = "none"
-                    score_h.style.display = "none"
-                }
-            }
-        }
-
-        // at least one is at different state
-        else{
-            for (var i = 0; i < game_count; i++){
-                if (element_states[i] == 1){
-                    var score_a = document.getElementById("score_a_" + i)
-                    var score_h = document.getElementById("score_h_" + i)
-                    score_a.style.display = "none"
-                    score_h.style.display = "none"
-                }
-            }
-        }
-
-        console.log(element_states)
+        element_states = find_score_states(game_count)
+        homogenize_states(game_count, element_states)
     }
-    
     
     else{ // user clicked on a matchup
         var score_a = document.getElementById("score_a_" + id_char)
@@ -122,6 +82,54 @@ function toggle_scores(id_char, game_count){
         else{
             score_a.style.display = "none"
             score_h.style.display = "none"
+        }
+    }
+}
+
+function find_score_states(game_count){
+    // documenting states of each score element
+    var element_states = []
+    for (var i = 0; i < game_count; i++){
+        var score_a = document.getElementById("score_a_" + i) // do not need score_h since both share same state
+        if (score_a.style.display == "none"){
+            element_states.push(0)
+        }
+        else{
+            element_states.push(1)        
+        }
+    }
+    return element_states
+}
+
+function array_equality(arr) {
+    return new Set(arr).size == 1;
+}
+
+function homogenize_states(game_count, element_states){
+    // if all are in same state
+    if (array_equality(element_states)){
+        for (var i = 0; i < game_count; i++){
+            var score_a = document.getElementById("score_a_" + i)
+            var score_h = document.getElementById("score_h_" + i)
+            if (score_a.style.display == "none"){
+                score_a.style.display = "block"
+                score_h.style.display = "block"
+            }
+            else{
+                score_a.style.display = "none"
+                score_h.style.display = "none"
+            }
+        }
+    }
+    // at least one is at different state
+    else{
+        for (var i = 0; i < game_count; i++){
+            if (element_states[i] == 1){
+                var score_a = document.getElementById("score_a_" + i)
+                var score_h = document.getElementById("score_h_" + i)
+                score_a.style.display = "none"
+                score_h.style.display = "none"
+            }
         }
     }
 }

@@ -20,7 +20,8 @@ def update_home():
 
 @app.route("/boxscore")
 def boxscore():
-    return render_template("boxscore.html")
+    data = package_data()
+    return render_template("boxscore.html", **data)
     
 if __name__ == "__main__":
     app.run(debug=True) 
