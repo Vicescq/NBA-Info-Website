@@ -72,7 +72,7 @@
     position: absolute;
     background-color: rgb(50, 54, 61);
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
-    display: none;
+    display: none; 
 }
 .eye_dropdown:hover .eye_dropdown_body{
     display: flex
@@ -81,12 +81,10 @@
     font-size: 50%;
     color: rgb(90, 167, 98);
     text-decoration: none;
-    padding: 10px 10px; 
+    padding: 14px 14px; 
     white-space: nowrap;
 }
-.eye1_wrapper, .eye2_wrapper{
-    flex: 1;
-}
+
 
 
 

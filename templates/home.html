@@ -10,16 +10,9 @@
 <li class="eye_dropdown">
     <img src="..//static//images//eye.svg"></a>
     <div class="eye_dropdown_body">
-        <div class="eye_settings">
-            <div class="eye1_wrapper">
-                <a href="javacript:" onclick="toggle_scores('{{game_count}}', 'T')"><u>All</u></a>
-            </div>
-            <div class="eye2_wrapper">
-                <a href="javacript:"><u>None</u></a>
-            </div>
-        </div>
+        <a href="javacript:" onclick="toggle_scores('NULL','{{game_count}}')"><u>All</u></a> 
         {% for i in range(game_count) %}
-        <a href="javacript:" onclick="toggle_scores('{{i}}', 'F')">{{matchups[i][0]}} vs {{matchups[i][1]}}</a>
+        <a href="javacript:" id="eye_matchups_{{i}}" onclick="toggle_scores('{{i}}', '{{game_count}}')">{{matchups[i][0]}} vs {{matchups[i][1]}}</a>
         {% endfor %}
     </div>
 </li>

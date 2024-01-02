@@ -60,15 +60,25 @@ function set_status_and_color(i, game_status, gamestatus_colour){
     $("#match_container_wrapper" + i + " div").css("background-color", gamestatus_colour[i]);
 }
 
-function update_home(){
-    $.get("/update_home", function(data){
-        set_homevalues(data, 0)
-    })
+function array_equality(arr) {
+    return new Set(arr).size == 1;
 }
 
-function toggle_scores(index, all_or_none){
-    if (all_or_none == "T"){
-        for (var i; i < index; i++){
+function toggle_scores(id_char, game_count){
+    if (id_char == "NULL"){
+        var element_states = []
+        for (var i = 0; i < game_count; i++){
+            var score_a = document.getElementById("score_a_" + i)
+            var score_h = document.getElementById("score_h_" + i)
+            if (score_a.style.display == "none"){
+                element_states.push(0)
+            }
+            else{
+                element_states.push(1)        
+            }
+        }
+
+        if (array_equality(element_states)){
             var score_a = document.getElementById("score_a_" + i)
             var score_h = document.getElementById("score_h_" + i)
             if (score_a.style.display == "none"){
@@ -78,12 +88,28 @@ function toggle_scores(index, all_or_none){
             else{
                 score_a.style.display = "none"
                 score_h.style.display = "none"
+                
             }
         }
+        else{
+            for (var i = 1; i < game_count+1; i++){
+                var score_a = document.getElementById("score_a_" + i)
+                var score_h = document.getElementById("score_h_" + i)
+                if (element_states[i] == 0){
+                    score_a.style.display = "block"
+                    score_h.style.display = "block"
+                }
+            }
+        }
+        console.log(element_states)
+        console.log(element_states[0])
+
     }
-    if (all_or_none == "F"){
-        var score_a = document.getElementById("score_a_" + index)
-        var score_h = document.getElementById("score_h_" + index)
+    
+    
+    else{
+        var score_a = document.getElementById("score_a_" + id_char)
+        var score_h = document.getElementById("score_h_" + id_char)
         if (score_a.style.display == "none"){
             score_a.style.display = "block"
             score_h.style.display = "block"
@@ -93,6 +119,12 @@ function toggle_scores(index, all_or_none){
             score_h.style.display = "none"
         }
     }
+}
+
+function update_home(){
+    $.get("/update_home", function(data){
+        set_homevalues(data, 0)
+    })
 }
 
 $(document).ready(function(){
