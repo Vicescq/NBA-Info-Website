@@ -65,7 +65,9 @@ function array_equality(arr) {
 }
 
 function toggle_scores(id_char, game_count){
-    if (id_char == "NULL"){
+    if (id_char == "NULL"){ // user clicked on All
+        
+        // documenting states of each score element
         var element_states = []
         for (var i = 0; i < game_count; i++){
             var score_a = document.getElementById("score_a_" + i)
@@ -78,36 +80,39 @@ function toggle_scores(id_char, game_count){
             }
         }
 
+        // if all are in same state
         if (array_equality(element_states)){
-            var score_a = document.getElementById("score_a_" + i)
-            var score_h = document.getElementById("score_h_" + i)
-            if (score_a.style.display == "none"){
-                score_a.style.display = "block"
-                score_h.style.display = "block"
-            }
-            else{
-                score_a.style.display = "none"
-                score_h.style.display = "none"
-                
-            }
-        }
-        else{
-            for (var i = 1; i < game_count+1; i++){
+            for (var i = 0; i < game_count; i++){
                 var score_a = document.getElementById("score_a_" + i)
                 var score_h = document.getElementById("score_h_" + i)
-                if (element_states[i] == 0){
+                if (score_a.style.display == "none"){
                     score_a.style.display = "block"
                     score_h.style.display = "block"
                 }
+                else{
+                    score_a.style.display = "none"
+                    score_h.style.display = "none"
+                }
             }
         }
-        console.log(element_states)
-        console.log(element_states[0])
 
+        // at least one is at different state
+        else{
+            for (var i = 0; i < game_count; i++){
+                if (element_states[i] == 1){
+                    var score_a = document.getElementById("score_a_" + i)
+                    var score_h = document.getElementById("score_h_" + i)
+                    score_a.style.display = "none"
+                    score_h.style.display = "none"
+                }
+            }
+        }
+
+        console.log(element_states)
     }
     
     
-    else{
+    else{ // user clicked on a matchup
         var score_a = document.getElementById("score_a_" + id_char)
         var score_h = document.getElementById("score_h_" + id_char)
         if (score_a.style.display == "none"){
