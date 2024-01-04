@@ -1,11 +1,33 @@
 {% extends "base.html" %}
 {% block head_elems %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/boxscore_styles.css')}}">
 {% endblock %}
 
 {% block content %}
+<div class="boxscore_header wrapper">
+    <div class="away_team">
+        <div class="name_and_rec_a">
+
+        </div>
+        <div class="logo_a">
+
+        </div>
+    </div>
+    <div class="scores_and_state">
+        2
+    </div>
+    <div class="home_team">
+        <div class="name_and_rec_h">
+
+        </div>
+        <div class="logo_h">
+
+        </div>
+    </div>
 
 
-<p>Test! Hello! {{match_id}}</p>
+
+</div>
 
 
 {% endblock %}

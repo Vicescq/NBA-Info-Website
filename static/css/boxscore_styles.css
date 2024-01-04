@@ -1,0 +1,22 @@
+.wrapper{
+    margin: 10%;
+
+    border: 10px;
+    border-style: solid;
+    border-color: beige;
+}
+
+
+.boxscore_header{
+    display: flex;
+}
+.away_team, .scores_and_state, .home_team{
+    flex: 1;
+    display: flex;
+}
+.name_and_rec_a, .name_and_rec_h{
+    flex: 2;
+}
+.logo_a, .logo_h{
+    flex: 1;
+}

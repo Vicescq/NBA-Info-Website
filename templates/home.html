@@ -12,7 +12,7 @@
     <div class="eye_dropdown_body">
         <a href="javascript:void(0)" onclick="toggle_scores('NULL','{{game_count}}')" id="eye_all"><u>All</u></a> 
         {% for i in range(game_count) %}
-        <a href="javascript:void(0)" id="eye_matchups_{{i}}" onclick="toggle_scores('{{i}}', '{{game_count}}')">{{matchups[i][0]}} vs {{matchups[i][1]}}</a>
+        <a href="javascript:void(0)" id="eye_matchups_{{i}}" onclick="toggle_scores('{{i}}', '{{game_count}}')"></a>
         {% endfor %}
     </div>
 </li>
