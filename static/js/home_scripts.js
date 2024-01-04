@@ -13,7 +13,7 @@ function set_homevalues(data, setup){
         set_logos(i, logos)
         set_name_rec(i, matchups, team_records)
         set_status_and_color(i, game_status, gamestatus_colour)
-        set_eye_scores(i, matchups)
+        set_eye_matchups(i, matchups)
     }
 }
 
@@ -61,7 +61,7 @@ function set_status_and_color(i, game_status, gamestatus_colour){
     $("#match_container_wrapper" + i + " div").css("background-color", gamestatus_colour[i]);
 }
 
-function set_eye_scores(i, matchups){
+function set_eye_matchups(i, matchups){
     var eye_matchup_str = matchups[i][0] + " vs " + matchups[i][1]
     $("#eye_matchups_" + i).text(eye_matchup_str)
 }
@@ -83,6 +83,7 @@ function toggle_scores(id_char, game_count){
             score_a.style.display = "none"
             score_h.style.display = "none"
         }
+        toggle_eyecss(score_a.style.display, id_char)
     }
 }
 
@@ -114,11 +115,13 @@ function homogenize_states(game_count, element_states){
             if (score_a.style.display == "none"){
                 score_a.style.display = "block"
                 score_h.style.display = "block"
+                
             }
             else{
                 score_a.style.display = "none"
                 score_h.style.display = "none"
             }
+            toggle_eyecss(score_a.style.display, i)
         }
     }
     // at least one is at different state
@@ -129,8 +132,21 @@ function homogenize_states(game_count, element_states){
                 var score_h = document.getElementById("score_h_" + i)
                 score_a.style.display = "none"
                 score_h.style.display = "none"
+                toggle_eyecss(score_a.style.display, i)
             }
         }
+    }
+}
+
+function toggle_eyecss(init_state, index){
+    var default_colour = "#242222"
+    if (init_state == "none"){
+        document.getElementById("eye_matchups_" + index).style.textDecoration = "line-through"
+        document.getElementById("eye_matchups_" + index).style.backgroundColor = "#b3152a"
+    }
+    else if (init_state == "block"){
+        document.getElementById("eye_matchups_" + index).style.textDecoration = "none"
+        document.getElementById("eye_matchups_" + index).style.backgroundColor = default_colour
     }
 }
 

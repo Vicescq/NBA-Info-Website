@@ -68,7 +68,7 @@ def get_gamestatus(games):
     status = []
     for game in games:
         status_text = game["gameStatusText"].strip()
-        if ((status_text == "Final") or (status_text == "Final/OT")):
+        if ((status_text == "Final") or (status_text == "Final/OT") or (status_text == "Final/OT2")):
             status.append("END")
         elif (status_text == "Half"):
             status.append("HALF")

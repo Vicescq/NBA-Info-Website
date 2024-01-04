@@ -70,7 +70,7 @@
 .eye_dropdown_body{
     flex-direction: column;
     position: absolute;
-    background-color: rgb(50, 54, 61);
+    background-color: #242222;
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
     display: none; 
 }
@@ -84,6 +84,10 @@
     padding: 14px 14px; 
     white-space: nowrap;
 }
+#eye_all{
+    background-color: rgb(34, 20, 20);
+}
+
 
 h1{
     margin: 10%;

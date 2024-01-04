@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from static.python.home_functions import *
 
 app = Flask(__name__)
@@ -20,8 +20,14 @@ def update_home():
 
 @app.route("/boxscore")
 def boxscore():
-    data = package_data()
-    return render_template("boxscore.html", **data)
+    args = request.args
+    match_id = args.get("match_id")
+
+
+
+
+    
+    return render_template("boxscore.html", match_id=match_id)
     
 if __name__ == "__main__":
     app.run(debug=True) 
