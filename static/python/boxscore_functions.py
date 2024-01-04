@@ -15,9 +15,14 @@ def get_livegame(game_index):
     return game
 
 def get_matchup(game):
-    away_team = game["awayTeam"]["teamTricode"]
-    home_team = game["homeTeam"]["teamTricode"] 
-    return away_team, home_team
+    """
+    Unlike the get_matchups() within home_functions, this one returns the FULL names of the teams
+    """
+    away_team1 = (game["awayTeam"]["teamCity"]).upper()
+    away_team2 = (game["awayTeam"]["teamName"]).upper()
+    home_team1 = (game["homeTeam"]["teamCity"]).upper()
+    home_team2 = (game["homeTeam"]["teamName"]).upper()
+    return away_team1, away_team2, home_team1, home_team2
 
 def get_team_records(game):
     away_rec = str(game["awayTeam"]["wins"]) + "-" + str(game["awayTeam"]["losses"])
@@ -43,7 +48,12 @@ def get_gamestatus(game):
             status_text = convert_PT_to_MT(status_text)
         return status_text
 
-def assign_logos(matchup):
+def assign_logos(game):
+    # modifying get_matchup requres me to add this small piece of code
+    away_team = game["awayTeam"]["teamTricode"]
+    home_team = game["homeTeam"]["teamTricode"]
+    matchup = away_team, home_team
+
     away_logo = "..\\static\\images\\logos\\" + matchup[0] + ".svg"
     home_logo = "..\\static\\images\\logos\\" + matchup[1] + ".svg"
     return away_logo, home_logo
@@ -55,7 +65,7 @@ def package_boxscore_data(game_index):
     team_records = get_team_records(game)
     livescores = get_livescores(game)
     game_status = get_gamestatus(game)
-    logos = assign_logos(matchup)
+    logos = assign_logos(game)
 
     data["matchup"] = matchup
     data["team_records"] = team_records

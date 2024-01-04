@@ -130,11 +130,13 @@ h1{
 .match_a{
     display: flex;
     flex: 1;
+    padding-right: 20px;
 }
 .misc_a{
     display: flex;
     flex-direction: column;
     flex: 1;
+    
 }
 .logo_a{
     flex: 2;
@@ -186,6 +188,7 @@ h1{
 .match_h{
     display: flex;
     flex: 1;
+    padding-left: 20px;
 }
 .misc_h{
     display: flex;
@@ -195,7 +198,6 @@ h1{
 .logo_h{
     flex: 2;
 }
-
 .abv_and_rec_h{
     display: flex;
     flex-direction: column;

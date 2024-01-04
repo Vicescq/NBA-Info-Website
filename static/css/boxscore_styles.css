@@ -1,22 +1,78 @@
-.wrapper{
-    margin: 10%;
-
-    border: 10px;
-    border-style: solid;
-    border-color: beige;
-}
-
-
 .boxscore_header{
+    margin: 10%;
+    margin-bottom: 0%;
     display: flex;
 }
-.away_team, .scores_and_state, .home_team{
+.away_team, .home_team{
+    flex: 1.4;
+    display: flex;
+}
+.scores_and_state{
     flex: 1;
     display: flex;
 }
 .name_and_rec_a, .name_and_rec_h{
     flex: 2;
+    display: flex;
+    flex-direction: column;
 }
 .logo_a, .logo_h{
     flex: 1;
 }
+.name_a, .name_h{
+    flex: 2;
+}
+.rec_a, .rec_h{
+    flex: 1;
+}
+
+.name_a{
+    text-align: end;
+    padding-right: 10px;
+    padding-top: 15px;
+    font-size: 120%;
+}
+.name_h{
+    text-align: start;
+    padding-left: 10px;
+    padding-top: 15px;
+    font-size: 120%;
+}
+.rec_a{
+    font-size: 0.6em; 
+    color: #999;
+    text-align: end;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+.name_a1, .name_a2, .name_h1, .name_h2 span{
+    display: block;
+}
+
+
+
+.divider{
+    border-top: 1px solid;
+    width: 80%;
+    border-color: rgba(166, 171, 166, 0.587);
+
+  }
+
+
+
+
+
+
+
+
+
+
+/* div {
+    outline: 1px solid red;
+} */
+
+
+
+
+
+  
