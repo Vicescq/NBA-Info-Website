@@ -124,7 +124,7 @@ def assign_logos(matchups):
         logos.append((away_logo, home_logo))
     return logos
 
-def package_data():
+def package_home_data():
     data = {}
     games = get_livegames()
     game_count = get_game_count(games)
