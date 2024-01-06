@@ -3,6 +3,10 @@
     margin-bottom: 0%;
     display: flex;
 }
+.boxscore_header img{
+    width: 100%;
+    height: 100%;
+}
 .away_team, .home_team{
     flex: 1.4;
     display: flex;
@@ -18,6 +22,8 @@
 }
 .logo_a, .logo_h{
     flex: 1;
+    min-width: 5rem;
+    min-height: 5rem;
 }
 .name_a, .name_h{
     flex: 2;
@@ -59,7 +65,9 @@
   }
 
 
-
+img{
+    max-width: 10rem;
+}
 
 
 
