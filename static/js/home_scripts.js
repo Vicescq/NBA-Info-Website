@@ -9,7 +9,6 @@ function set_homevalues(data, setup){
     var game_status = data.game_status
     var gamestatus_colour = data.gamestatus_colour
     var logos = data.logos;
-    flush_DOM_elements(gameids, game_count)
     for (var i = 0; i < game_count; i++) {
         set_scores(i, livescores, setup)
         set_logos(i, logos)
@@ -19,14 +18,7 @@ function set_homevalues(data, setup){
     }
 }
 
-function flush_DOM_elements(gameids, game_count){
-    for (var i = 0; i < game_count; i++){
-        console.log("YO")
-        if (($("#match_container_wrapper" + i)).data('gameid') != gameids[i]){
-            $("#match_container_wrapper" + i).remove()
-        }
-    }
-}
+
 
 function set_scores(i, livescores, setup){
     animate_scores(i, livescores, setup)
