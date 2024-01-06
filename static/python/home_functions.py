@@ -9,7 +9,7 @@ def get_livegames():
     response = requests.get(url)
     response_json = response.json()
     games = response_json["scoreboard"]["games"]
-    #games = make_stable(games)
+    games = make_stable(games)
     return games
 
 def make_stable(games):
