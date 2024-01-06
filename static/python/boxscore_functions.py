@@ -2,7 +2,7 @@
 Extremely similar functions compare to home_functions.py, just a few changes, majority involves the removal of for loops as we are on single game basis instead of processing multiple
 """
 import requests, pytz
-from static.python.home_functions import convert_PT_to_MT
+from static.python.home_functions import convert_PT_to_MT, make_stable
 
 def get_livegame(game_index):
     """
@@ -11,7 +11,9 @@ def get_livegame(game_index):
     url = "https://cdn.nba.com/static/json/liveData/scoreboard/todaysScoreboard_00.json"
     response = requests.get(url)
     response_json = response.json()
-    game = response_json["scoreboard"]["games"][game_index]
+    games = response_json["scoreboard"]["games"]
+    games = make_stable(games)
+    game = games[game_index]
     return game
 
 def get_matchup(game):

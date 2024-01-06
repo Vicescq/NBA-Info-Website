@@ -1,6 +1,7 @@
 function set_homevalues(data, setup){
     // setup is a boolean val that prevents ALL scores from animating on first load
     console.log(data)
+    var gameids = data.gameids
     var game_count = data.game_count
     var matchups = data.matchups
     var team_records = data.team_records
@@ -8,12 +9,22 @@ function set_homevalues(data, setup){
     var game_status = data.game_status
     var gamestatus_colour = data.gamestatus_colour
     var logos = data.logos;
+    flush_DOM_elements(gameids, game_count)
     for (var i = 0; i < game_count; i++) {
         set_scores(i, livescores, setup)
         set_logos(i, logos)
         set_name_rec(i, matchups, team_records)
         set_status_and_color(i, game_status, gamestatus_colour)
         set_eye_matchups(i, matchups)
+    }
+}
+
+function flush_DOM_elements(gameids, game_count){
+    for (var i = 0; i < game_count; i++){
+        console.log("YO")
+        if (($("#match_container_wrapper" + i)).data('gameid') != gameids[i]){
+            $("#match_container_wrapper" + i).remove()
+        }
     }
 }
 

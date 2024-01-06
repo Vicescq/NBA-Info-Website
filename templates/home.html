@@ -22,9 +22,9 @@
 {% block content %}
 <h1>NBA Games</h1>
 {% for i in range(game_count) %}
-<div class="match_container_wrapper" id="match_container_wrapper{{i}}">
+<div class="match_container_wrapper" id="match_container_wrapper{{i}}" data-gameid="{{gameids[i]}}">
     
-    <a href="http://127.0.0.1:5000/boxscore?match_id=match_link_{{i}}" class="match_link" id="match_link_{{i}}"> <!-- temp link!! -->
+    <a href="http://127.0.0.1:5000/boxscore?match_id=match_link_{{i}}" class="match_link"> <!-- temp link!! -->
         <div class="match_container">
             
             <div class="match_a">

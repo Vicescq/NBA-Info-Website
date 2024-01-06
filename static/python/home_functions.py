@@ -22,6 +22,13 @@ def make_stable(games):
     stable_list_of_games = sorted(games, key=lambda game: game["gameId"])
     return stable_list_of_games
 
+def get_gameids(games):
+    gameids = []
+    for game in games:
+        gameid = game["gameId"]
+        gameids.append(gameid)
+    return gameids
+
 def get_game_count(games):
     return len(games)
 
@@ -127,6 +134,7 @@ def assign_logos(matchups):
 def package_home_data():
     data = {}
     games = get_livegames()
+    gameids = get_gameids(games)
     game_count = get_game_count(games)
     matchups = get_matchups(games)
     team_records = get_team_records(games)
@@ -135,6 +143,7 @@ def package_home_data():
     gamestatus_colour = get_gamestatus_colour(game_status, game_count)
     logos = assign_logos(matchups)
 
+    data["gameids"] = gameids
     data["game_count"] = game_count
     data["matchups"] = matchups
     data["team_records"] = team_records
