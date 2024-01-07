@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from "react"
+import Header1 from "./components/home/components.jsx"
 
-function App(){
-  
+function set_api(){
   const [data, setData] = useState([{}])
-
   useEffect(() => {
     fetch("/homedata").then(
       res => res.json()
@@ -14,13 +13,13 @@ function App(){
       }
     )
   }, []);
+}
 
+function App(){
+  
+  set_api()
   return(
-    <div>
-
-      
-    </div>
-
+    <Header1/>
   )
 }
 
