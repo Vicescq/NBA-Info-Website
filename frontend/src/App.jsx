@@ -1,25 +1,35 @@
 import React, {useState, useEffect} from "react"
-import Header1 from "./components/home/components.jsx"
+import Home from "./components/home/home.jsx"
 
-function set_api(){
-  const [data, setData] = useState([{}])
-  useEffect(() => {
-    fetch("/homedata").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, []);
-}
+
+
+
 
 function App(){
   
-  set_api()
+  // fetching data
+  const [data, setData] = useState(0)
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetch("/homedata").then(
+        res => res.json()
+      ).then(
+        data => {
+          setData(data)
+          console.log(data)
+          // do stuff with data
+        }
+      )
+      
+    }, 3000)
+    return () => clearInterval(interval)
+  }, []);
+
   return(
-    <Header1/>
+    <>
+      <Home/>
+    </>
   )
 }
 

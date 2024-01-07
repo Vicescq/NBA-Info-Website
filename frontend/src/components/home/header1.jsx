@@ -1,4 +1,4 @@
-import "../../css/home/components.css"
+import "./header1.css"
 
 function Header1(){
     return (

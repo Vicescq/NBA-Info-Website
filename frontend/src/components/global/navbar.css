@@ -1,0 +1,32 @@
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 10; /* arbitrary value */
+}
+.navbar *{
+    background-color: rgb(45, 28, 52);
+}
+.navbar ul{
+    list-style-type: none;
+    padding: .5%;
+    padding-bottom: .25%;
+    display: flex;
+}
+.navbar div:not(.eye_dropdown_body){
+    display: flex;
+    flex: 1;
+}
+
+.navbar li{
+    padding: .3em .3em;
+    padding-inline: .75em;
+    color: rgb(90, 167, 98);
+    text-decoration: none;
+}
+.navbar img{
+    width: 2.5em;
+    height: 2.5em; 
+}
+.second_half{
+    justify-content: flex-end;
+}
