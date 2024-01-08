@@ -9,7 +9,7 @@ function App(){
   
   // fetching data
   const [data, setData] = useState(0)
-  
+  const ms = 3000
   useEffect(() => {
     const interval = setInterval(() => {
       fetch("/homedata").then(
@@ -22,7 +22,7 @@ function App(){
         }
       )
       
-    }, 3000)
+    }, ms)
     return () => clearInterval(interval)
   }, []);
 

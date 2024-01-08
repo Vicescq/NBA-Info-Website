@@ -1,13 +1,18 @@
 import Navbar from "../global/navbar.jsx"
-import Header1 from "./header1.jsx"
+import Header from "./header.jsx"
 import Match from "./match.jsx"
 
 
 function Home(){
+    
+    
     return (
         <>
         <Navbar/>
-        <Header1/>
+        <Header/>
+        <Match/>
+        <Match/>
+        <Match/>
         <Match/>
         <Match/>
         <Match/>
