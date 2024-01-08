@@ -6,6 +6,8 @@ h1{
     animation-name: h1_slide;
     animation-duration: 2.25s;
     animation-timing-function: ease-in-out;
+    font-size: 3vw;
+    min-width: 1vw;
 }
 @keyframes h1_slide{
     0% {

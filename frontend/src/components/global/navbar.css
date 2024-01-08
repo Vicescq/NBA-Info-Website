@@ -18,8 +18,8 @@
 }
 
 .navbar li{
-    padding: .3em .3em;
-    padding-inline: .75em;
+    padding: .3rem .3rem;
+    padding-inline: .75rem;
     color: rgb(90, 167, 98);
     text-decoration: none;
 }
