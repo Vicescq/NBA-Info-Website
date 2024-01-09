@@ -12,6 +12,11 @@ python3 -m venv venv
 
 
 
+cd to frontend
+npm i
+
+
+
 
 
 Misc
