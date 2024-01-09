@@ -9,9 +9,9 @@ def home():
     if data["game_count"]:
         return data
     elif not data["game_count"]:
-        return {"nothing": "NOTHING!"}
+        return {"null": "No games Today!"}
     else:
-        print("API Error!")
+        return {"API_err": "An error occured in the API"}
 
 if __name__ == "__main__":
     app.run(debug=True) 
