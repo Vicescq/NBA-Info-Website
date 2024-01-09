@@ -1,33 +1,41 @@
 import "./match.css"
-import testlogo from "../../assets/logos/DEN.svg"
 
-function Match(){
+function Match(props){
+    const homedata = props.homedata
+    const index = props.index
+    const container = homedata.gamestatus_class[index]
+    
+   
     return(
         <>
         <a href="" className="match_link">
-            <div className="match_container">
+            <div className={container}>
                 
                 <div className="team">
-                   <div className="score"></div>
+                   <div className="score">{homedata.livescores[index][0]}</div>
                    <div className="teaminfo">
-                        <div className="logo"><img src={testlogo}></img></div>
+                        <div className="logo"><img src={homedata.logos[index][0]}></img></div>
                         <div className="info">
-                            <div className="abv">Lorem </div>
-                            <div className="rec">Lorem </div>
+                            <div className="abv">{homedata.matchups[index][0]}</div>
+                            <div className="rec">{homedata.team_records[index][0]}</div>
                         </div>
                    </div>
                 </div>
                 
                 <div className="middle">
-
+                    <div className="status">{homedata.game_status[index]}</div>
+                    <div className="location"><img src="assets/misc/at-loc.svg"></img></div>
                 </div>
                 
                 <div className="team">
                     <div className="teaminfo">
-                        <div className="logo"></div>
-                        <div className="info"></div>
+                        <div className="logo"><img src={homedata.logos[index][1]}></img></div>
+                        <div className="info">
+                            <div className="abv">{homedata.matchups[index][1]}</div>
+                            <div className="rec">{homedata.team_records[index][1]}</div>
+                        </div>
                     </div>
-                    <div className="score"></div>
+                    <div className="score">{homedata.livescores[index][1]}</div>
                 </div>
 
             </div>

@@ -8,27 +8,44 @@ import Home from "./components/home/home.jsx"
 function App(){
   
   // fetching data
-  const [data, setData] = useState(0)
-  const ms = 3000
+  let init_load = 1
+  const [homedata, setData] = useState(0)
+  let ms = 3000
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (init_load){
       fetch("/homedata").then(
         res => res.json()
       ).then(
-        data => {
-          setData(data)
-          console.log(data)
+        homedata => {
+          setData(homedata)
+          console.log(homedata)
           // do stuff with data
         }
       )
-      
-    }, ms)
-    return () => clearInterval(interval)
+      init_load = 0
+    }
+    
+    else{
+      const interval = setInterval(() => {
+        fetch("/homedata").then(
+          res => res.json()
+        ).then(
+          homedata => {
+            setData(homedata)
+            console.log(homedata)
+            // do stuff with data
+          }
+        )
+        
+      }, ms)
+      return () => clearInterval(interval)
+    }
   }, []);
+
 
   return(
     <>
-      <Home/>
+      <Home homedata={homedata}/>
     </>
   )
 }

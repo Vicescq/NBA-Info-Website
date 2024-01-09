@@ -5,3 +5,16 @@
     font-family: 'Lexend', sans-serif;
     color: rgb(90, 167, 98);
 }
+
+::-webkit-scrollbar{
+    width: .9em;
+}
+
+::-webkit-scrollbar-track{
+    background: rgb(48, 53, 73);
+}
+
+::-webkit-scrollbar-thumb{
+    background: hsl(83, 25%, 62%);
+    border-radius: 25vw;
+}
