@@ -3,13 +3,11 @@ import "./match.css"
 function Match(props){
     const homedata = props.homedata
     const index = props.index
-    const container = homedata.gamestatus_class[index]
     
-   
     return(
-        <>
+       
         <a href="" className="match_link">
-            <div className={container}>
+            <div className={homedata.gamestatus_class[index]}>
                 
                 <div className="team">
                    <div className="score">{homedata.livescores[index][0]}</div>
@@ -40,7 +38,7 @@ function Match(props){
 
             </div>
         </a>
-        </>
+        
     )
 }
 export default Match
