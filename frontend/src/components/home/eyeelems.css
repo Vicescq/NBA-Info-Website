@@ -1,5 +1,6 @@
 .eyematch, .eyematch_hidden{
-    display: block;
+    /* display: block; */
+    display: none;
     font-size: 1em;
     color: rgb(90, 167, 98);
     text-decoration: none;
