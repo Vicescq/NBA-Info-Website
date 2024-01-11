@@ -1,23 +1,17 @@
 import React, {useState, useEffect} from "react"
-import Home from "./components/home/home.jsx"
+import Home from "./pages/home.jsx"
 
 
-function fetch_homedata(homedata, setData, ms, init_load){
-  if (init_load){
-    fetch("/homedata").then(
-      res => res.json()
-    ).then(
-      homedata => {
-        setData(homedata)
-        console.log(homedata)
-        // do stuff with data
-      }
-    )
-    init_load = 0
-  }
+
+
+
+function App(){
   
-  else{
-    const interval = setInterval(() => {
+  let init_load = 1
+  const [homedata, setData] = useState(0)
+  let ms = 3000
+  useEffect(() => {
+    if (init_load){
       fetch("/homedata").then(
         res => res.json()
       ).then(
@@ -27,20 +21,24 @@ function fetch_homedata(homedata, setData, ms, init_load){
           // do stuff with data
         }
       )
-      
-    }, ms)
-    return () => clearInterval(interval)
-  }
-}
-
-
-function App(){
-  
-  let init_load = 1
-  const [homedata, setData] = useState(0)
-  let ms = 3000
-  useEffect(() => {
-    fetch_homedata(homedata, setData, ms, init_load)
+      init_load = 0
+    }
+    
+    else{
+      const interval = setInterval(() => {
+        fetch("/homedata").then(
+          res => res.json()
+        ).then(
+          homedata => {
+            setData(homedata)
+            console.log(homedata)
+            // do stuff with data
+          }
+        )
+        
+      }, ms)
+      return () => clearInterval(interval)
+    }
   }, []);
 
 

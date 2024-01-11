@@ -1,30 +1,19 @@
-import Navbar from "../global/navbar.jsx"
-import Header from "./header.jsx"
-import Match from "./match.jsx"
-
+import Navbar from "../components/global/navbar.jsx"
+import Header from "../components/home/header.jsx"
+import Match from "../components/home/match.jsx"
+import Nogameswrn from "../components/home/nogames_wrn.jsx"
 
 function Home(props){
     const homedata = props.homedata
     if (homedata.null){
         return (
             <>
-            
-            <Header/>
-            <div className="nogames">{homedata.null}</div>
+            <Navbar/>
+            <Nogameswrn homedata={homedata}/>
             </>
         )
     }
 
-    else if (homedata.API_err){
-        return (
-            <>
-            
-            <Header/>
-            <div className="api_error">{homedata.API_err}</div>
-            </>
-        )
-    }
-    
     else{
         const matches = []
         for (let i = 0; i < homedata.game_count; i++){
@@ -32,7 +21,7 @@ function Home(props){
         }
         return (
             <>
-            <Navbar/>
+            <Navbar homedata={homedata}/>
             <Header/>
             {matches}
             </>

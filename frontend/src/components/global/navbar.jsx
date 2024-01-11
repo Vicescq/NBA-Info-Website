@@ -1,20 +1,24 @@
 import "./navbar.css"
 import Eye from "../home/eye.jsx"
 
-function Navbar(){
+function Navbar(props){
+
+    const homedata = props.homedata
+    
+
     return (
         <nav className="navbar">
-        <ul>
-            <div>
-                <li><a href=""><img src="assets/navbar/bball.svg"></img></a></li> 
-                <li><a href=""><img src="assets/navbar/chart.svg"></img></a></li> 
+        <ul className="navlist">
+            <div className="ele_wrapper">
+                <li className="ele"><a href=""><img src="assets/navbar/bball.svg"></img></a></li> 
+                <li className="ele"><a href=""><img src="assets/navbar/chart.svg"></img></a></li> 
                 
-                <Eye/>
+                <Eye homedata={homedata}/>
                 
             </div>
-            <div className="second_half">
-                <li ><a href=""><img src="assets/navbar/bulb.svg"></img></a></li>
-                <li><a href="https://github.com/Vicescq/NBA-Web-Scraping" target="_blank"><img src="assets/navbar/github.svg"></img></a></li>
+            <div className="second_half ele_wrapper">
+                <li className="ele"><a href=""><img src="assets/navbar/bulb.svg"></img></a></li>
+                <li className="ele"><a href="https://github.com/Vicescq/NBA-Web-Scraping" target="_blank"><img src="assets/navbar/github.svg"></img></a></li>
             </div>
         </ul>
     </nav>

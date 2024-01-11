@@ -1,0 +1,13 @@
+.eyematch, .eyematch_hidden{
+    display: block;
+    font-size: 1em;
+    color: rgb(90, 167, 98);
+    text-decoration: none;
+    padding: 1em 1em; 
+    white-space: nowrap;
+}
+
+.eyematch_hidden{
+    text-decoration: line-through;
+    background-color: #b3152a;
+}

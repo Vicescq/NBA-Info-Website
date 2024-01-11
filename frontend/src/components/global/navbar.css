@@ -6,27 +6,31 @@
 .navbar *{
     background-color: rgb(45, 28, 52);
 }
-.navbar ul{
+
+.navbar img{
+    width: 2.1em;
+    height: 2.1em; 
+}
+
+.navlist{
     list-style-type: none;
     padding: .5%;
     padding-bottom: .25%;
     display: flex;
 }
-.navbar div:not(.eye_dropdown_body){
+
+.ele_wrapper{
     display: flex;
     flex: 1;
 }
 
-.navbar li{
+.second_half{
+    justify-content: flex-end;
+}
+
+.ele{
     padding: .1rem .1rem;
     padding-inline: .75rem;
     color: rgb(90, 167, 98);
     text-decoration: none;
-}
-.navbar img{
-    width: 2.1em;
-    height: 2.1em; 
-}
-.second_half{
-    justify-content: flex-end;
 }
