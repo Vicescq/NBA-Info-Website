@@ -1,4 +1,4 @@
-import Navbar from "../components/global/navbar.jsx"
+import Navbar from "../components/navbar/navbar.jsx"
 import Header from "../components/home/header.jsx"
 import Match from "../components/home/match.jsx"
 import Nogameswrn from "../components/home/nogames_wrn.jsx"
