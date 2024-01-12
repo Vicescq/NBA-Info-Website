@@ -14,23 +14,52 @@
 
 .navlist{
     list-style-type: none;
-    padding: .5%;
-    padding-bottom: .25%;
+    padding-top: .5%;
+    padding-bottom: .5%;
     display: flex;
 }
 
-.ele_wrapper{
+.navlist > li{
+    padding-inline: .4rem;
+    padding-top: .05rem;
+}
+
+.align_right{
+    margin-left: auto;
+}
+
+.navitem{
+    position: relative;
+}
+
+.navdropdown{
     display: flex;
+    flex-direction: column;
     flex: 1;
+    list-style-type: none;
+    position: absolute;
+    box-shadow: 5px 5px 10px rgb(0, 0, 0);
 }
 
-.second_half{
-    justify-content: flex-end;
+.navdropdown *{
+    background-color: #242222;
 }
 
-.ele{
-    padding: .1rem .1rem;
-    padding-inline: .75rem;
-    color: rgb(90, 167, 98);
-    text-decoration: none;
+.navdropdownitem{
+    white-space: nowrap;
+    padding: 1em 1em;
+    
+    
 }
+
+.navdropdownitem:hover{
+    cursor: pointer;
+    color: rgb(174, 207, 178); 
+}
+
+
+
+/* .eyematch_hidden{
+    text-decoration: line-through;
+    background-color: #b3152a;
+} */

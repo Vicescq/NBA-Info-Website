@@ -1,9 +1,8 @@
 import "./nogames_wrn.css"
 
-function Nogameswrn(props){
-    const homedata = props.homedata
+function Nogameswrn(){
     return (
-        <div className="nogames">{homedata.null}</div>
+        <div className="nogames">No games today!</div>
     )
 }
 
