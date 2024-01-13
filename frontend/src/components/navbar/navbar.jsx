@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import "./navbar.css"
 
 function Navbar(props){
@@ -64,6 +65,9 @@ function NavDropDownItem(props){
     if (props.matchups != undefined){
         const matchups = props.matchups
         const index = props.index
+        const item_state = useRef(0)
+        
+        
         return(
             <>
             {index == 0 ? <li className="navdropdownitem navitem_eyeall">ALL</li>: null}
