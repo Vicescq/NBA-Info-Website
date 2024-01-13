@@ -1,62 +1,78 @@
 import "./navbar.css"
 
 function Navbar(props){
+    // generalize
+    
     const homedata = props.homedata
-    const bballprops = itemprops_constructor("assets/navbar/bball.svg",)
-    const chartprops = itemprops_constructor("assets/navbar/chart.svg")
-    const bulbprops = itemprops_constructor("assets/navbar/bulb.svg")
-    const eyeprops = itemprops_constructor("assets/navbar/eye.svg")
+    const bballprops = navitemprops_constructor("assets/navbar/bball.svg",)
+    const chartprops = navitemprops_constructor("assets/navbar/chart.svg")
+    const bulbprops = navitemprops_constructor("assets/navbar/bulb.svg")
+    const eyeprops = navitemprops_constructor("assets/navbar/eye.svg")
     eyeprops.href = "javascript:void(0)"
     eyeprops.dropdown = 1
-    const githubprops = itemprops_constructor("assets/navbar/github.svg", "https://github.com/Vicescq/NBA-Web-Scraping", "_blank", "align_right")
-
+    const githubprops = navitemprops_constructor("assets/navbar/github.svg", "https://github.com/Vicescq/NBA-Web-Scraping", "_blank", "align_right")
+    
     return (
     <nav className="navbar">
     <ul className="navlist">
         <NavItem itemprops={bballprops}/>
         <NavItem itemprops={chartprops}/>
         <NavItem itemprops={bulbprops}/>
-        {homedata.game_count ? <NavItem itemprops={eyeprops}/> : null}
+        {homedata.game_count ? <NavItem itemprops={eyeprops} homedata={homedata}/> : null}
         <NavItem itemprops={githubprops}/>
     </ul>
     </nav>
     )
 }
 
-function itemprops_constructor(imgsrc, href="", target="", alignment="align_left", dropdown=0){
+function navitemprops_constructor(imgsrc, href="", target="", alignment="align_left", dropdown=0){
     return {imgsrc: imgsrc, href: href, target: target, alignment: alignment, dropdown: dropdown}
 }
 
 function NavItem(props){
+    const homedata = props.homedata
     const itemprops = props.itemprops
     return(
-        
         <li className={`navitem ${itemprops.alignment}`}>
         <a href={itemprops.href} target={itemprops.target} >
         <img src={itemprops.imgsrc}></img>
         </a>
-        {itemprops.dropdown ? <NavDropDown/> : null}
+        {itemprops.dropdown ? <NavDropDown homedata={homedata}/> : null}
         </li>
     )
 }
 
 function NavDropDown(props){
-    return(
-    <ul className="navdropdown">
-        <NavDropDownItem/>
-        <NavDropDownItem/>
-        <NavDropDownItem/>
-    </ul>
-
-    )
+    
+    
+    if (props.homedata != undefined){ // home, eye dropdown
+        const homedata = props.homedata
+        const items = []
+        for (let i = 0; i < homedata.game_count; i++){
+            items.push(<NavDropDownItem matchups={homedata.matchups} index={i}/>)
+        }
+        
+        return(
+        <ul className="navdropdown">
+            {items}
+        </ul>
+        )
+    }
 }
 
 function NavDropDownItem(props){
-    return(
-    <li className="navdropdownitem">
-        ABC vs DEF
-    </li>
-    )
+    if (props.matchups != undefined){
+        const matchups = props.matchups
+        const index = props.index
+        return(
+            <>
+            {index == 0 ? <li className="navdropdownitem navitem_eyeall">ALL</li>: null}
+            <li className="navdropdownitem">
+                {matchups[index][0]} vs {matchups[index][1]}
+            </li>
+            </>
+        )
+    }
 }
 
 export default Navbar

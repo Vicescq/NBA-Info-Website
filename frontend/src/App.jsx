@@ -9,13 +9,13 @@ function App(){
   useEffect(() => {
     
     if (initload.current){
-      fetch_homedata(homedata, setData)
+      fetch_homedata(setData)
       initload.current = 0
     }
 
     else{
       const interval = setInterval(() => {
-        fetch_homedata(homedata, setData)
+        fetch_homedata(setData)
       }, ms)
       return () => clearInterval(interval)
     }
@@ -29,14 +29,13 @@ function App(){
   )
 }
 
-function fetch_homedata(homedata, setData){
+function fetch_homedata(setData){
   fetch("/homedata").then(
-    res => res.json()
+    response => response.json()
     ).then(
       homedata => {
         setData(homedata)
         console.log(homedata)
-        // do stuff with data
       }
     )
 
