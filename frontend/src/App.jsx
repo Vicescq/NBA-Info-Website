@@ -3,6 +3,8 @@ import Home from "./pages/home.jsx"
 
 function App(){  
   const initload = useRef(1)
+
+
   const [homedata, setData] = useState(0)
   let ms = 3000
   
@@ -28,6 +30,8 @@ function App(){
     </>
   )
 }
+
+
 
 function fetch_homedata(setData){
   fetch("/homedata").then(
