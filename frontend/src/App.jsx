@@ -18,6 +18,10 @@ function App(){
     else{
       const interval = setInterval(() => {
         fetch_homedata(setData)
+        
+        //document.getElementById("match_0").children[0].children[0].style.visibility = "visible"
+        
+        // document.getElementById("match_0").children[2].children[1].innerHTML = ""
       }, ms)
       return () => clearInterval(interval)
     }

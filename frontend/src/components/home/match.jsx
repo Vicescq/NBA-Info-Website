@@ -3,11 +3,10 @@ import "./match.css"
 function Match(props){
     const homedata = props.homedata
     const index = props.index
-    
     return(
        
         <a href="" className="match_link">
-            <div className={homedata.gamestatus_class[index]}>
+            <div id={"match_" + index} className={homedata.gamestatus_class[index]}>
                 
                 <div className="team">
                    <div className="score">{homedata.livescores[index][0]}</div>
