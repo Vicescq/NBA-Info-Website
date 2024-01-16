@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import "./match.css"
 
 function Match(props){
@@ -5,7 +6,7 @@ function Match(props){
     const index = props.index
     return(
        
-        <a href="" className="match_link">
+        <a href={"match_" + index} className="match_link">
             <div id={"match_" + index} className={homedata.gamestatus_class[index]}>
                 
                 <div className="team">

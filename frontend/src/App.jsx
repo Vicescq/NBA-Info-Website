@@ -1,37 +1,36 @@
-import React, {useState, useEffect, useRef} from "react"
+import React, {useState, useEffect} from "react"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/home.jsx"
 
 function App(){  
-  const initload = useRef(1)
-
-
-  const [homedata, setData] = useState(0)
+  let initload = true
   let ms = 3000
+  const [homedata, setData] = useState(0)
+  const [boxscore, setBoxscore] = useState(0)
+  
   
   useEffect(() => {
     
-    if (initload.current){
+    if (initload){
       fetch_homedata(setData)
-      initload.current = 0
+      initload = false
     }
 
     else{
       const interval = setInterval(() => {
         fetch_homedata(setData)
-        
-        //document.getElementById("match_0").children[0].children[0].style.visibility = "visible"
-        
-        // document.getElementById("match_0").children[2].children[1].innerHTML = ""
       }, ms)
       return () => clearInterval(interval)
     }
   }, []);
     
-      
   return(
-    <>
-      <Home homedata={homedata} initload={initload}/>
-    </>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home homedata={homedata} initload={initload}/>}></Route>
+    </Routes>
+    </BrowserRouter>
+    
   )
 }
 
@@ -46,7 +45,18 @@ function fetch_homedata(setData){
         console.log(homedata)
       }
     )
-
 }
+
+function fetch_boxscore(setBoxscore){
+  fetch("/boxscore").then(
+    response => response.json()
+    ).then(
+      boxscore => {
+        setBoxscore(boxscore)
+        console.log(boxscore)
+      }
+    )
+}
+
 
 export default App

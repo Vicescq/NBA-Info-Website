@@ -15,7 +15,7 @@ function Home(props){
     return(
         <>
         <Navbar homedata={homedata}/>
-        {(!homedata.game_count && !initload.current) ? <Nogameswrn/> : null} {/* !initload.current is required as a condition due to a bug where Nogameswrn gets rendered everytime on first load, we do not want that */}
+        {(!homedata.game_count && !initload) ? <Nogameswrn/> : null} {/* !initload.current is required as a condition due to a bug where Nogameswrn gets rendered everytime on first load, we do not want that */}
         {homedata.game_count ? <Header/> : null }
         {matches}
         </>

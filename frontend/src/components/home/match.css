@@ -1,9 +1,12 @@
+
 .match_container, .match_container_ongoing, .match_container_end{
     padding: .5%;
     display: flex;
     border-style: outset;
     box-shadow: 1em 1em 1em black;
+    border-color: rgb(142, 188, 102);
 }
+
 
 .match_container_ongoing{
     background-color: rgb(219, 64, 64);
@@ -16,6 +19,7 @@
 
 .match_container_end, .match_container_end *{
     background-color: rgb(19, 26, 18);
+    border-color: rgb(142, 188, 102);
 }
 
 .match_link{
