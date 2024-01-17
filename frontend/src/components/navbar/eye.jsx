@@ -42,8 +42,8 @@ function EyeNavDropDownItem(props){
         }
         else{
             const eyenavitem = document.getElementById("eyenavdropdownitem_" + index)
-            const score1 = document.getElementById("match_" + index).children[0].children[0]
-            const score2 = document.getElementById("match_" + index).children[2].children[1]
+            const score1 = document.getElementById("match/" + index).children[0].children[0]
+            const score2 = document.getElementById("match/" + index).children[2].children[1]
             console.log(score1.style.visibility)
             if (score1.style.visibility == "visible" || score1.style.visibility == ""){   // "" bc it starts as "" on first load
                 score1.style.visibility = "hidden"
@@ -74,8 +74,8 @@ function EyeNavDropDownItem(props){
 function gather_score_DOMS(game_count){
     const score_arr = []
     for (let i = 0; i < game_count; i++){
-        const score1 = document.getElementById("match_" + i).children[0].children[0]
-        const score2 = document.getElementById("match_" + i).children[2].children[1]
+        const score1 = document.getElementById("match/" + i).children[0].children[0]
+        const score2 = document.getElementById("match/" + i).children[2].children[1]
         score_arr.push([score1, score2])
     }
     return score_arr   

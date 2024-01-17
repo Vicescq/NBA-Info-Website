@@ -1,5 +1,6 @@
 import "./navbar.css"
 import EyeNavItem from "./eye"
+import { Link } from "react-router-dom"
 
 function Navbar(props){
     const homedata = props.homedata
@@ -7,8 +8,12 @@ function Navbar(props){
     const chartprops = navitemprops_constructor("chart","assets/navbar/chart.svg")
     const bulbprops = navitemprops_constructor("bulb", "assets/navbar/bulb.svg")
     const eyeprops = navitemprops_constructor("eye", "assets/navbar/eye.svg")
-    eyeprops.dropdown = 1
     const githubprops = navitemprops_constructor("github", "assets/navbar/github.svg", "https://github.com/Vicescq/NBA-Web-Scraping", "_blank", "align_right")
+    
+    bballprops.href = "/"
+    chartprops.href = "/"
+    bulbprops.href = "/"
+    eyeprops.dropdown = 1
     
     return (
     <nav className="navbar">
@@ -16,7 +21,7 @@ function Navbar(props){
         <NavItem itemprops={bballprops}/>
         <NavItem itemprops={chartprops}/>
         <NavItem itemprops={bulbprops}/>
-        {homedata.game_count ? <EyeNavItem itemprops={eyeprops} homedata={homedata}/> : null}
+        {homedata ? <EyeNavItem itemprops={eyeprops} homedata={homedata}/> : null}
         <NavItem itemprops={githubprops}/>
     </ul>
     </nav>
@@ -31,9 +36,11 @@ function NavItem(props){
     const itemprops = props.itemprops
     return(
             <li className={`navitem ${itemprops.alignment}`}>
-            <a href={itemprops.href} target={itemprops.target} >
+            <Link to={itemprops.href} target={itemprops.target}>
+
             <img src={itemprops.imgsrc}></img>
-            </a>
+            </Link>
+
             </li>
     )
 }

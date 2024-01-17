@@ -6,8 +6,8 @@ function Match(props){
     const index = props.index
     return(
        
-        <a href={"match_" + index} className="match_link">
-            <div id={"match_" + index} className={homedata.gamestatus_class[index]}>
+        <Link to={"match/" + index} className="match_link">
+            <div id={"match/" + index} className={homedata.gamestatus_class[index]}>
                 
                 <div className="team">
                    <div className="score">{homedata.livescores[index][0]}</div>
@@ -37,7 +37,9 @@ function Match(props){
                 </div>
 
             </div>
-        </a>
+        </Link>
+
+        
         
     )
 }
