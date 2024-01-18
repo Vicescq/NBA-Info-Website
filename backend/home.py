@@ -105,7 +105,7 @@ def convert_PT_to_MT(pt_str):
     mt_str = mt_str.strip("0")
     return mt_str
 
-def get_gamestatus_colour(game_status, game_count):
+def get_gamestatus_class(game_status, game_count):
     """
     returns list of hex color strings dependent on the status of game
     """
@@ -113,11 +113,11 @@ def get_gamestatus_colour(game_status, game_count):
     for i in range(game_count):
         status_text = game_status[i]
         if (len(status_text.split()) == 3): # form of ["10:30", "pm", "ET"]
-            gamestatus_colour.append("#22272b") # future game
-        elif (status_text == "END"):
-            gamestatus_colour.append("#590b0b") # finished game
+            gamestatus_colour.append("match_container") # future game
+        elif (status_text == "END" or status_text == "PPD"):
+            gamestatus_colour.append("match_container_end") # finished game, PPD == postponed game, rare occurence
         else:
-            gamestatus_colour.append("#1e162f") # live game
+            gamestatus_colour.append("match_container_ongoing") # live game
     return gamestatus_colour
 
 def assign_logos(matchups):
@@ -126,8 +126,8 @@ def assign_logos(matchups):
     """
     logos = []
     for matchup in matchups:
-        away_logo = "..\\static\\images\\logos\\" + matchup[0] + ".svg"
-        home_logo = "..\\static\\images\\logos\\" + matchup[1] + ".svg"
+        away_logo = "assets/logos/" + matchup[0] + ".svg"
+        home_logo = "assets/logos/" + matchup[1] + ".svg"
         logos.append((away_logo, home_logo))
     return logos
 
@@ -140,7 +140,7 @@ def package_home_data():
     team_records = get_team_records(games)
     livescores = get_livescores(games)
     game_status = get_gamestatus(games)
-    gamestatus_colour = get_gamestatus_colour(game_status, game_count)
+    gamestatus_class = get_gamestatus_class(game_status, game_count)
     logos = assign_logos(matchups)
 
     data["gameids"] = gameids
@@ -149,7 +149,7 @@ def package_home_data():
     data["team_records"] = team_records
     data["livescores"] = livescores
     data["game_status"] = game_status
-    data["gamestatus_colour"] = gamestatus_colour
+    data["gamestatus_class"] = gamestatus_class
     data["game_count"] = game_count
     data["logos"] = logos
     return data

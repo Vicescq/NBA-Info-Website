@@ -1,0 +1,35 @@
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 10; /* arbitrary value */
+}
+.navbar *{
+    background-color: rgb(45, 28, 52);
+}
+
+.navbar img{
+    width: 2.1em;
+    height: 2.1em; 
+}
+
+.navlist{
+    list-style-type: none;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    display: flex;
+    padding-left: .5%;
+    padding-right: .5%;
+}
+
+.navlist > li{
+    padding-inline: .75rem;
+    padding-top: .05rem;
+}
+
+.align_right{
+    margin-left: auto;
+}
+
+.navitem{
+    position: relative;
+}

@@ -1,0 +1,97 @@
+
+.match_container, .match_container_ongoing, .match_container_end{
+    padding: .5%;
+    display: flex;
+    border-style: outset;
+    box-shadow: 1em 1em 1em black;
+    border-color: rgb(142, 188, 102);
+}
+
+
+.match_container_ongoing{
+    background-color: rgb(219, 64, 64);
+    border-color: rgb(219, 64, 64);
+}
+
+.match_container_ongoing *{
+    background-color: rgb(39, 32, 60);
+}
+
+.match_container_end, .match_container_end *{
+    background-color: rgb(19, 26, 18);
+    border-color: rgb(142, 188, 102);
+}
+
+.match_link{
+    display: block;
+    margin: 20vw;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-decoration: none;
+}
+
+.team{
+    padding: .5%;
+    flex: 2.8;
+    display: flex;
+}
+
+.middle{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.status{
+    flex: 5;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1.25vw;
+}
+
+.location{
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.location img{
+    width: 2vw;
+}
+
+.score{
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+}
+
+.teaminfo{
+    flex: .75;
+    display: flex;
+    flex-direction: column;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.info div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abv{
+    font-size: 2.4vh;
+}
+
+.rec{
+    font-size: 1.75vh;
+    color: rgb(76, 171, 186);
+}
+
