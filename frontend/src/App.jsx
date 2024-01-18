@@ -5,26 +5,24 @@ import Boxscore from "./pages/boxscore.jsx";
 import NotFound from "./pages/notfound.jsx";
 
 function App(){  
-  let initload = true
   let ms = 3000
+  const [initload, setInitload] = useState(true)
   const [homedata, setData] = useState(false)
-  
 
   useEffect(() => {
     
     if (initload){
       fetch_homedata(setData)
-      initload = false
+      setInitload(false)
     }
-
+    
     else{
       const interval = setInterval(() => {
       fetch_homedata(setData)
       }, ms)
       return () => clearInterval(interval)
     }
-    
-  }, []);
+  }, [initload]);
   
   return(
     <Routes>

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import "./eye.css"
 
-function EyeNavItem(props){
-    const homedata = props.homedata
-    const itemprops = props.itemprops
+function EyeNavItem({homedata, itemprops}){
+    
     return(
         <li className={`navitem ${itemprops.alignment} eyenav`}>
         <a>
@@ -14,122 +13,85 @@ function EyeNavItem(props){
     )
 }
 
-function EyeNavDropDown(props){
-    if (props.homedata != undefined){ // home, eye dropdown
-        const homedata = props.homedata
-        const items = []
-        for (let i = 0; i < homedata.game_count; i++){
-            items.push(<EyeNavDropDownItem matchups={homedata.matchups} index={i} game_count={homedata.game_count} key={i}/>)
-        }
-        
-        return(
-        <ul className="eyenavdropdown">
-            {items}
-        </ul>
-        )
+function EyeNavDropDown({homedata}){
+    
+    const init_togglestates = []
+    for (let i = 0; i < homedata.game_count; i++){
+        init_togglestates.push(false)
     }
-}
 
-function EyeNavDropDownItem(props){
-    const matchups = props.matchups
-    const index = props.index
-    const game_count = props.game_count
-    const item_onclick = (if_all) => {
-        if (if_all){
-            const score_arr = gather_score_DOMS(game_count)
-            const visibility_tracker = probe_score_visiblity_states(game_count, score_arr)
-            toggling_logic_scores(game_count, score_arr, visibility_tracker)
-        }
-        else{
-            const eyenavitem = document.getElementById("eyenavdropdownitem_" + index)
-            const score1 = document.getElementById("match/" + index).children[0].children[0]
-            const score2 = document.getElementById("match/" + index).children[2].children[1]
-            console.log(score1.style.visibility)
-            if (score1.style.visibility == "visible" || score1.style.visibility == ""){   // "" bc it starts as "" on first load
-                score1.style.visibility = "hidden"
-                score2.style.visibility = "hidden"
-                eyenavitem.style.textDecoration = "line-through"
-                eyenavitem.style.backgroundColor = "#b3152a"
+    const [togglestates, setTogglestates] = useState(init_togglestates)
+    
+    function toggle_visibility(index){
+        setTogglestates((togglestates) => {
+            const new_togglestates = [...togglestates]
+            new_togglestates[index] = !togglestates[index]
+            return  new_togglestates
+        })
+    }
 
+    function all_toggle_visibility(){
+
+        const equality = arr => arr.every(val => val === arr[0])
+        const invert = arr => arr.map(val => !val)
+        const toggle_remaining_visible = arr => arr.map(val => !val ? !val : val)
+
+        setTogglestates(() => {
+            const new_togglestates = [...togglestates]
+            if (equality(new_togglestates)){
+                return invert(new_togglestates)
             }
             else{
-                score1.style.visibility = "visible"
-                score2.style.visibility = "visible"
-                eyenavitem.style.textDecoration = ""
-                eyenavitem.style.backgroundColor = "#242222"
+                return toggle_remaining_visible(new_togglestates)
             }
-        }
+            
+        })
     }
+    
+    const items = []
+    for (let i = 0; i < homedata.game_count; i++){
+        items.push(<EyeNavDropDownItem homedata={homedata} index={i} key={i} togglestate={togglestates[i]} toggle_visibility={toggle_visibility} all_toggle_visibility={all_toggle_visibility}/>)
+    }
+    
+    return(
+    <ul className="eyenavdropdown">
+        {items}
+    </ul>
+    )
+}
+
+function EyeNavDropDownItem({homedata, index, togglestate, toggle_visibility, all_toggle_visibility}){
+    const matchups = homedata.matchups
+    const game_count = homedata.game_count
+    
+    useEffect(() => {
+        const eyenavdropdownitem = document.getElementById("eyenavdropdownitem" + index)
+        const score1 = document.getElementById("match/" + index).children[0].children[0]
+        const score2 = document.getElementById("match/" + index).children[2].children[1]
+        if (togglestate){
+            score1.style.visibility = "hidden"
+            score2.style.visibility = "hidden"
+            eyenavdropdownitem.classList.remove("eye_visible")
+            eyenavdropdownitem.classList.add("eye_hidden")
+        }
+        else{
+            score1.style.visibility = "visible"
+            score2.style.visibility = "visible"
+            eyenavdropdownitem.classList.remove("eye_hidden")
+            eyenavdropdownitem.classList.add("eye_visible")
+        }
+    }, [togglestate])
 
     return(
         <>
-        {index == 0 ? <li className="eyenavdropdownitem eyeall" onClick={() => {item_onclick(1)}}>ALL</li>: null}
-        <li id={"eyenavdropdownitem_" + index} className="eyenavdropdownitem" onClick={() => {item_onclick(0)}}>
+        {index == 0 ? <li className="eyenavdropdownitem eyeall" onClick={all_toggle_visibility}>ALL</li>: null}
+        <li id={"eyenavdropdownitem" + index} className="eyenavdropdownitem eye_visible" onClick={() => {toggle_visibility(index)}}>
             {matchups[index][0]} vs {matchups[index][1]}
         </li>
         </>
     )
 }
 
-function gather_score_DOMS(game_count){
-    const score_arr = []
-    for (let i = 0; i < game_count; i++){
-        const score1 = document.getElementById("match/" + i).children[0].children[0]
-        const score2 = document.getElementById("match/" + i).children[2].children[1]
-        score_arr.push([score1, score2])
-    }
-    return score_arr   
-}
-
-function probe_score_visiblity_states(game_count, score_arr){
-    let i = 0
-    const visibility_tracker = []
-    while(i < game_count){
-        if (score_arr[i][0].style.visibility == "hidden"){
-            visibility_tracker.push(0)
-        }
-        else{
-            visibility_tracker.push(1)
-        }
-        i += 1
-    }
-    return visibility_tracker
-}
-
-function toggling_logic_scores(game_count, score_arr, visibility_tracker){
-    const set = new Set(visibility_tracker)
-    if (set.size == 1){
-        if(visibility_tracker[0] == 1){
-            for (let i = 0; i < game_count; i++){
-                const eyenavitem = document.getElementById("eyenavdropdownitem_" + i)
-                score_arr[i][0].style.visibility = "hidden"
-                score_arr[i][1].style.visibility = "hidden"
-                eyenavitem.style.textDecoration = "line-through"
-                eyenavitem.style.backgroundColor = "#b3152a"
-            }
-        }
-        else{
-            for (let i = 0; i < game_count; i++){
-                const eyenavitem = document.getElementById("eyenavdropdownitem_" + i)
-                score_arr[i][0].style.visibility = "visible"
-                score_arr[i][1].style.visibility = "visible"
-                eyenavitem.style.textDecoration = ""
-                eyenavitem.style.backgroundColor = "#242222"
-            }
-        }
-    }
-    else{
-        for (let i = 0; i < game_count; i++){
-            const eyenavitem = document.getElementById("eyenavdropdownitem_" + i)
-            if (visibility_tracker[i]){
-                score_arr[i][0].style.visibility = "hidden"
-                score_arr[i][1].style.visibility = "hidden"
-                eyenavitem.style.textDecoration = "line-through"
-                eyenavitem.style.backgroundColor = "#b3152a"
-            }
-        }
-    }
-}
 
 
 export default EyeNavItem

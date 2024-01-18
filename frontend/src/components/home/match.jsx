@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
 import "./match.css"
 
-function Match(props){
-    const homedata = props.homedata
-    const index = props.index
+function Match({homedata, index}){
+
     return(
        
         <Link to={"match/" + index} className="match_link">

@@ -113,13 +113,10 @@ def get_gamestatus_class(game_status, game_count):
     for i in range(game_count):
         status_text = game_status[i]
         if (len(status_text.split()) == 3): # form of ["10:30", "pm", "ET"]
-            #gamestatus_colour.append("#22272b") # future game
             gamestatus_colour.append("match_container") # future game
-        elif (status_text == "END"):
-            #gamestatus_colour.append("#590b0b") # finished game
-            gamestatus_colour.append("match_container_end") # finished game
+        elif (status_text == "END" or status_text == "PPD"):
+            gamestatus_colour.append("match_container_end") # finished game, PPD == postponed game, rare occurence
         else:
-            #gamestatus_colour.append("#1e162f") # live game
             gamestatus_colour.append("match_container_ongoing") # live game
     return gamestatus_colour
 

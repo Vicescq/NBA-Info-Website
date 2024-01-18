@@ -3,8 +3,7 @@ import Header from "../components/home/header.jsx"
 import Match from "../components/home/match.jsx"
 import Nogameswrn from "../components/home/nogames_wrn.jsx"
 
-function Home(props){
-    const homedata = props.homedata
+function Home({homedata}){
     
     const matches = []
     for (let i = 0; i < homedata.game_count; i++){

@@ -1,7 +1,8 @@
 header{
-    margin: 10%;
-    padding-left: 5.5%;
-    margin-bottom: 0;
+    margin: 20vw;
+    margin-top: 10vw;
+    
+    margin-bottom: 5vw;
     animation-name: h1_slide;
     animation-duration: 2.25s;
     animation-timing-function: ease-in-out;

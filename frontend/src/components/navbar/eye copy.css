@@ -15,6 +15,10 @@ a:hover{
     box-shadow: 5px 5px 10px rgb(0, 0, 0);
 }
 
+.eyenavdropdown *{
+    background-color: #242222;
+}
+
 .eyenavdropdownitem{
     white-space: nowrap;
     padding: 1em 1em;
@@ -22,7 +26,6 @@ a:hover{
     justify-content: center;
     align-items: center;
     user-select: none;
-    
 }
 
 .eyenavdropdownitem:hover{
@@ -33,13 +36,4 @@ a:hover{
 .eyeall{
     background-color: rgb(0, 0, 0);
     text-decoration: underline;
-}
-
-.eye_visible{
-    background-color: #242222;
-}
-
-.eye_hidden{
-    background-color: #b3152a;
-    text-decoration: line-through;
 }

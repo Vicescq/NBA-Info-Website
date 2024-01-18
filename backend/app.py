@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
-from home_functions import *
+from home import *
+from boxscore import *
 import time
 
 app = Flask(__name__)

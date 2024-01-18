@@ -2,8 +2,7 @@ import "./navbar.css"
 import EyeNavItem from "./eye"
 import { Link } from "react-router-dom"
 
-function Navbar(props){
-    const homedata = props.homedata
+function Navbar({homedata}){
     const bballprops = navitemprops_constructor("bball", "assets/navbar/bball.svg",)
     const chartprops = navitemprops_constructor("chart","assets/navbar/chart.svg")
     const bulbprops = navitemprops_constructor("bulb", "assets/navbar/bulb.svg")
@@ -32,12 +31,10 @@ function navitemprops_constructor(name, imgsrc, href="", target="", alignment="a
     return {name: name, imgsrc: imgsrc, href: href, target: target, alignment: alignment, dropdown: dropdown}
 }
 
-function NavItem(props){
-    const itemprops = props.itemprops
+function NavItem({itemprops}){
     return(
             <li className={`navitem ${itemprops.alignment}`}>
             <Link to={itemprops.href} target={itemprops.target}>
-
             <img src={itemprops.imgsrc}></img>
             </Link>
 
