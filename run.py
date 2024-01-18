@@ -1,5 +1,7 @@
-import subprocess
+import subprocess, platform
+os_name = platform.system()
 
-
-
-cmd = subprocess.Popen('cmd.exe /K cd /') 
+if os_name == "Windows":
+    script_file_path = r"scripts\run.bat"
+    subprocess.run([script_file_path], shell=True)
+    

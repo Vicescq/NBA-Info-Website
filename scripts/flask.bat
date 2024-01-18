@@ -1,5 +1,5 @@
 @echo off
-cd .\backend\
+cd ..\backend\
 call .\venv\Scripts\activate
 python app.py
 
