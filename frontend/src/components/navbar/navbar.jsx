@@ -37,7 +37,6 @@ function NavItem({itemprops}){
             <Link to={itemprops.href} target={itemprops.target}>
             <img src={itemprops.imgsrc}></img>
             </Link>
-
             </li>
     )
 }

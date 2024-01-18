@@ -10,20 +10,7 @@ function Boxscore(props){
     let initload = true
     let ms = 3000
 
-    useEffect(() => {
-        if (initload){
-            fetch_boxscore(setBoxscoredata)
-            initload = false
-        }
-
-        else{
-            const interval = setInterval(() => {
-            fetch_boxscore(setBoxscoredata)
-            }, ms)
-            return () => clearInterval(interval)
-        }
-
-      }, []);
+    
 
     if (homedata){
         if ((id < 0 || id >= homedata.game_count)){

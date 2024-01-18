@@ -5,9 +5,7 @@ function EyeNavItem({homedata, itemprops}){
     
     return(
         <li className={`navitem ${itemprops.alignment} eyenav`}>
-        <a>
         <img src={itemprops.imgsrc}></img>
-        </a>
         <EyeNavDropDown homedata={homedata}/>
         </li>
     )
@@ -21,17 +19,17 @@ function EyeNavDropDown({homedata}){
     }
 
     const [togglestates, setTogglestates] = useState(init_togglestates)
+    // false == visible, true == hidden
     
     function toggle_visibility(index){
         setTogglestates((togglestates) => {
             const new_togglestates = [...togglestates]
             new_togglestates[index] = !togglestates[index]
-            return  new_togglestates
+            return new_togglestates
         })
     }
 
     function all_toggle_visibility(){
-
         const equality = arr => arr.every(val => val === arr[0])
         const invert = arr => arr.map(val => !val)
         const toggle_remaining_visible = arr => arr.map(val => !val ? !val : val)
@@ -44,7 +42,6 @@ function EyeNavDropDown({homedata}){
             else{
                 return toggle_remaining_visible(new_togglestates)
             }
-            
         })
     }
     
@@ -62,7 +59,6 @@ function EyeNavDropDown({homedata}){
 
 function EyeNavDropDownItem({homedata, index, togglestate, toggle_visibility, all_toggle_visibility}){
     const matchups = homedata.matchups
-    const game_count = homedata.game_count
     
     useEffect(() => {
         const eyenavdropdownitem = document.getElementById("eyenavdropdownitem" + index)

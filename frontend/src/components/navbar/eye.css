@@ -1,9 +1,9 @@
-/* needed becuase no href will make you not have a ptr when hovering the anchor */
-a:hover{ 
-    cursor: pointer;
-}
 .eyenav:hover .eyenavdropdown{
     display: flex;
+}
+
+.eyenav:hover{
+    cursor: pointer;
 }
 
 .eyenavdropdown{
