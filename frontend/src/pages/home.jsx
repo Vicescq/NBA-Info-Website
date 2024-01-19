@@ -8,9 +8,9 @@ function Home(){
     let ms = 3000
     const [initload, setInitload] = useState(true)
     const [homedata, setData] = useState(false)
-
+    
     useEffect(() => {
-
+  
         if (initload){
             fetch_homedata(setData)
             setInitload(false)
@@ -23,12 +23,14 @@ function Home(){
             return () => clearInterval(interval)
         }
 
-    }, [initload]);
+      }, [initload]);
     
+
     const matches = []
     for (let i = 0; i < homedata.game_count; i++){
         matches.push(<Match key={i} homedata={homedata} index={i}/>)
     }
+
     
     if (homedata){ 
         // {/* homedata == false) is required as a condition due to a premature rendering everytime on first load, since homedata state default is false, we do not want that! */}
@@ -43,13 +45,12 @@ function Home(){
     }
 }
 
-
 async function fetch_homedata(setData){
     const response = await fetch("/homedata")
     const homedata =  await response.json()
     setData(homedata)
     console.log(homedata)
-}
+  }
 
 
 export default Home

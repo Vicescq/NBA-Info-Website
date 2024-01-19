@@ -3,36 +3,39 @@ import NotFound from "./notfound"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
-function Boxscore(props){
-    const homedata = props.homedata
-    const {id} = useParams()
+function Boxscore(){
+    
+    
+    const [initload, setInitload] = useState(true)
     const [boxscoredata, setBoxscoredata] = useState(false)
-    let initload = true
     let ms = 3000
 
-    
+    useEffect(() => {
 
-    if (homedata){
-        if ((id < 0 || id >= homedata.game_count)){
-            return(
-                <>
-                <Navbar/>
-                <NotFound/>
-                </>
-            )
+        if (initload){
+            fetch_boxscore(setBoxscoredata)
+            setInitload(false)
         }
-    
+
         else{
-            return(
-                <>
-                <Navbar/> 
-                <div>
-                    {boxscoredata.test}
-                </div>
-                </>
-            )
+            const interval = setInterval(() => {
+                fetch_boxscore(setBoxscoredata)
+            }, ms)
+            return () => clearInterval(interval)
         }
-    }
+
+    }, [initload]);
+
+    return(
+        <>
+        <Navbar/> 
+        <div>
+            {boxscoredata.test}
+        </div>
+        </>
+    )
+        
+    
 }
 
 async function fetch_boxscore(setBoxscoredata){

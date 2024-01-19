@@ -6,6 +6,7 @@ import NotFound from "./pages/notfound.jsx";
 
 function App(){  
   
+
   return(
     <Routes>
       <Route path="/" element={<Home/>}></Route>
@@ -14,6 +15,8 @@ function App(){
     </Routes>
   )
 }
+
+
 
 
 
