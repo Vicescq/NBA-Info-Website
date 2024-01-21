@@ -3,6 +3,7 @@ import Header from "../components/home/header.jsx"
 import Match from "../components/home/match.jsx"
 import Nogameswrn from "../components/home/nogames_wrn.jsx"
 import { useEffect, useState } from "react"
+import NotFound from "./notfound.jsx"
 
 function Home(){
     let ms = 3000
@@ -41,6 +42,12 @@ function Home(){
             {homedata.game_count ? <Header/> : null }
             {matches}
             </>
+        )
+    }
+
+    else{
+        return(
+            <NotFound />
         )
     }
 }

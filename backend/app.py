@@ -12,8 +12,10 @@ def home():
 
 @app.route("/boxscore")
 def boxscore():
-    print({"test": 123})
-    return {"test": 123}
+    args = request.args
+    value = int(args.get("mindex"))
+    data = package_boxscoredata(value)
+    return data
 
 @app.route("/gamecount")
 def gamecount():

@@ -1,0 +1,31 @@
+table {
+    margin: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td, th{
+    text-align: center;
+    padding: .4vw;
+}
+
+td{
+    border-bottom: 2px solid rgb(61, 53, 80);
+}
+
+th{
+    color: rgb(0, 0, 0);
+    font-weight: 1000;
+    background-color: rgb(111, 165, 70);
+}
+
+/* thead{
+    border-style: solid;
+    border-color: rgb(38, 167, 171);
+} */
+
+/* .active *{
+    background-color: rgba(79, 173, 112, 0.242);
+} */

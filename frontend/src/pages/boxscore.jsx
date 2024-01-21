@@ -2,67 +2,68 @@ import Navbar from "../components/navbar/navbar"
 import NotFound from "./notfound"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import Table from "../components/boxscore/table"
 
 function Boxscore(){
-    let ms = 3000
-
+    let ms = 6000
     const {index} = useParams()
-    // const [gamecount, setGamecount] = useState(0)
-    // useEffect(() => {
-
-    // })
-
-    // const gamecount = fetch_gamecount()
-    // if ( !( (index >= 0) && (index < gamecount) ) ){
-    //     return(
-    //         <>
-    //         <Navbar/> 
-    //         <NotFound/>
-    //         </>
-    //     )
-    // }
-
     const [initload, setInitload] = useState(true)
+    const [gamecount, setGamecount] = useState(0)
     const [boxscoredata, setBoxscoredata] = useState(false)
 
     useEffect(() => {
 
-        if (initload){
-            fetch_boxscore(setBoxscoredata)
+        if(initload){
+            fetch_boxscore(setBoxscoredata, index)
+            fetch_gamecount(setGamecount)
             setInitload(false)
         }
 
         else{
             const interval = setInterval(() => {
-                fetch_boxscore(setBoxscoredata)
+                fetch_boxscore(setBoxscoredata, index)
+                fetch_gamecount(setGamecount)
             }, ms)
             return () => clearInterval(interval)
         }
 
     }, [initload]);
 
-    return(
-        <>
-        <Navbar/> 
-        <div>
-            {boxscoredata.test}
-        </div>
-        </>
-    )
+    const out_of_bounds = !((index >= 0) && (index < gamecount))
+    if(boxscoredata){
+        if ( out_of_bounds || boxscoredata.error == "GAME HAS NOT STARTED"){
+            return(
+                <>
+                <Navbar/> 
+                <NotFound/>
+                </>
+            )
+        }
+    
+        else{
+            return(
+                <>
+                <Navbar/> 
+                <Table players={boxscoredata.awayplayers}/>
+                <Table players={boxscoredata.homeplayers}/>
+                </>
+            )
+        }
+    }
+
 }
 
-async function fetch_boxscore(setBoxscoredata){
-    const response = await fetch("/boxscore")
+async function fetch_boxscore(setBoxscoredata, index){
+    const response = await fetch(`/boxscore?mindex=${index}`)
     const boxscoredata = await response.json()
     setBoxscoredata(boxscoredata)
     console.log(boxscoredata)
 }
 
-async function fetch_gamecount(){
+async function fetch_gamecount(setGamecount){
     const response = await fetch("/gamecount")
     const gamecount = await response.json()
-    console.log(gamecount)
-    return gamecount
+    setGamecount(gamecount)
 }
 
 export default Boxscore
