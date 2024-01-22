@@ -1,32 +1,35 @@
-# Setup
-Temporary !!!!
+## Python Virtual Environment Setup
 
-Python venv setup Windows:
+### Windows:
+1. cd to backend
 
-python -m venv venv
+1. python -m venv venv
 
-venv/Scripts/activate
+2. venv/Scripts/activate
 
-Mac:
+3. pip install -r requirements.txt
 
-python3 -m venv venv
+<br/>
 
-. venv/bin/activate  
+### Mac:
+1. cd to backend
 
+1. python3 -m venv venv
 
+2. source venv/bin/activate  
 
-cd to frontend
+3. pip install -r requirements.txt
 
-npm i
+<br/>
 
+### NodeJS Module setup
+1. cd to frontend
 
+2. npm i
 
+<br/>
 
+## Useful Commands
+- pip list
 
-Misc:
-
-pip list
-
-pip freeze
-
-pip install -r requirements.txt
+- pip freeze
