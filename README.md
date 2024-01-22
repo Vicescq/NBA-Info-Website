@@ -22,7 +22,7 @@
 
 <br/>
 
-### NodeJS Module setup
+## NodeJS Module setup
 1. cd to frontend
 
 2. npm i
