@@ -4,6 +4,7 @@ import Match from "../components/home/match.jsx"
 import Nogameswrn from "../components/home/nogames_wrn.jsx"
 import { useEffect, useState } from "react"
 import NotFound from "./notfound.jsx"
+import Loading from "./loading.jsx"
 
 function Home(){
     let ms = 3000
@@ -14,6 +15,7 @@ function Home(){
   
         if (initload){
             fetch_homedata(setData)
+            
             setInitload(false)
         }
 
@@ -32,9 +34,10 @@ function Home(){
         matches.push(<Match key={i} homedata={homedata} index={i}/>)
     }
 
+
     
     if (homedata){ 
-        // {/* homedata == false) is required as a condition due to a premature rendering everytime on first load, since homedata state default is false, we do not want that! */}
+        // homedata is required as a condition due to a premature rendering everytime on first load, since homedata state default is false, we do not want that!
         return(
             <>
             <Navbar homedata={homedata}/>
@@ -47,7 +50,8 @@ function Home(){
 
     else{
         return(
-            <NotFound />
+            
+            <Loading/>
         )
     }
 }
@@ -57,7 +61,7 @@ async function fetch_homedata(setData){
     const homedata =  await response.json()
     setData(homedata)
     console.log(homedata)
-  }
+}
 
 
 export default Home

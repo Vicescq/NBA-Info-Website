@@ -1,20 +1,23 @@
 from home import *
-from dateutil.parser import isoparse
 
 def package_boxscoredata(mindex):
     data = {}
     data["error"] = "SUCCESS"
+    games = get_livegames()
+    gameids = get_gameids(games)
     try:
-        games = get_livegames()
-        gameids = get_gameids(games)
         gameid_target = gameids[mindex]
-
         boxscore_json = get_boxscoredata(gameid_target)
         players = get_players(boxscore_json)
         data["awayplayers"] = players[0]
         data["homeplayers"] = players[1]
     except:
-        data["error"] = "GAME HAS NOT STARTED"
+        # 2 cases, if game does not actually exist, or if game has not started yet
+        out_of_bounds = not ((mindex >= 0) and (mindex < len(gameids)))
+        if (out_of_bounds):
+            data["error"] = "DOES NOT EXIST"
+        else:
+            data["error"] = "GAME HAS NOT STARTED"
 
     
     return data
@@ -80,11 +83,6 @@ def format_statistics(stats):
     min = time_str.split("M")[0][-2:]
     sec = time_str.split("M")[1].split(".")[0]
     stats["minutes"] = f"{min}:{sec}"
-
-    # a = isoparse(iso_time)
-    # minutes = a.total_seconds() // 60
-    # seconds = a.total_seconds() % 60
-    # stats["minutes"] = f"{minutes}:{seconds}"
 
 
     return stats

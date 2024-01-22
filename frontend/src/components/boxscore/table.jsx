@@ -28,10 +28,17 @@ function Table({players}){
 
         } = players[i].statistics
         
+        let class_status
+        if (players[i].oncourt == "1"){
+            class_status = "active"
+        }
+
+
         rows.push(
             
-            <tr key={i} className="test">
-            <td>{players[i].name}</td>
+
+            <tr key={i}  className={class_status}>
+            <td className="test">{players[i].name}</td>
             <td>{points ? points : null}</td>
             <td>{reboundsTotal ? reboundsTotal : null}</td>
             <td>{assists ? assists : null}</td>
@@ -76,7 +83,7 @@ function Table({players}){
             <th>FTA</th>
             <th>FT%</th>
             <th>OREB</th>
-            <th>DREB</th>
+            <th >DREB</th>
             <th>STL</th>
             <th>BLK</th>
             <th>TO</th>

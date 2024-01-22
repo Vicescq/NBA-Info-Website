@@ -59,23 +59,42 @@ function EyeNavDropDown({homedata}){
 
 function EyeNavDropDownItem({homedata, index, togglestate, toggle_visibility, all_toggle_visibility}){
     const matchups = homedata.matchups
+    const [initload, setInitload] = useState(true)
+    
+
+    
+    
     
     useEffect(() => {
         const eyenavdropdownitem = document.getElementById("eyenavdropdownitem" + index)
         const score1 = document.getElementById("match/" + index).children[0].children[0]
         const score2 = document.getElementById("match/" + index).children[2].children[1]
+        let vis_state
+                
         if (togglestate){
             score1.style.visibility = "hidden"
             score2.style.visibility = "hidden"
             eyenavdropdownitem.classList.remove("eye_visible")
             eyenavdropdownitem.classList.add("eye_hidden")
+            sessionStorage.setItem("scorevis" + index, "hidden")
         }
         else{
-            score1.style.visibility = "visible"
-            score2.style.visibility = "visible"
-            eyenavdropdownitem.classList.remove("eye_hidden")
-            eyenavdropdownitem.classList.add("eye_visible")
+            if(!initload){
+                score1.style.visibility = "visible"
+                score2.style.visibility = "visible"
+                eyenavdropdownitem.classList.remove("eye_hidden")
+                eyenavdropdownitem.classList.add("eye_visible")
+                sessionStorage.setItem("scorevis" + index, "visible")
+            }
+            else{
+                score1.style.visibility = sessionStorage.getItem("scorevis" + index)
+                score2.style.visibility = sessionStorage.getItem("scorevis" + index)
+                eyenavdropdownitem.classList.remove("eye_hidden")
+                eyenavdropdownitem.classList.add("eye_visible")
+                setInitload(false)
+            }
         }
+        
     }, [togglestate])
 
     return(

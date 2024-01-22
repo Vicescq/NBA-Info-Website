@@ -3,6 +3,7 @@ import NotFound from "./notfound"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Table from "../components/boxscore/table"
+import Loading from "./loading"
 
 function Boxscore(){
     let ms = 6000
@@ -28,28 +29,47 @@ function Boxscore(){
         }
 
     }, [initload]);
-
-    const out_of_bounds = !((index >= 0) && (index < gamecount))
-    if(boxscoredata){
-        if ( out_of_bounds || boxscoredata.error == "GAME HAS NOT STARTED"){
-            return(
-                <>
-                <Navbar/> 
-                <NotFound/>
-                </>
-            )
-        }
     
-        else{
-            return(
-                <>
-                <Navbar/> 
-                <Table players={boxscoredata.awayplayers}/>
-                <Table players={boxscoredata.homeplayers}/>
-                </>
-            )
-        }
+    const out_of_bounds = !((index >= 0) && (index < gamecount))
+    
+    if (!boxscoredata){
+        return(
+            <Loading/>
+        )
+        
     }
+
+    else if ( out_of_bounds){
+        return(
+            <>
+            <Navbar/> 
+            <NotFound/>
+            </>
+        )
+    }
+
+    else if(boxscoredata.error == "GAME HAS NOT STARTED"){
+        return(
+            <>
+            <Navbar/> 
+            <div>
+                GAME HAS NOT STARTED
+            </div>
+            
+            </>
+        )
+    }
+
+    else{
+        return(
+            <>
+            <Navbar/> 
+            <Table players={boxscoredata.awayplayers}/>
+            <Table players={boxscoredata.homeplayers}/>
+            </>
+        )
+    }
+    
 
 }
 
