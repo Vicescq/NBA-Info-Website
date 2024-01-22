@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 import "./match.css"
 import { useEffect, useState } from "react"
 
-function Match({homedata, index, scorestate}){
+function Match({homedata, index}){
 
-    
+    const scorestate = "visible"
     
     return(
        
