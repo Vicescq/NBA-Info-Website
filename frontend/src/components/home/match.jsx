@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom"
 import "./match.css"
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { EyeStatesContext } from "../../pages/home"
 
 function Match({homedata, index}){
-
-    const scorestate = "visible"
+    
+    const [eyestates] = useContext(EyeStatesContext)
+    const scorestate = eyestates[index] ? "hidden" : "visible"
     
     return(
        
         <Link to={"match/" + index} className="match_link">
-            <div id={"match/" + index} className={homedata.gamestatus_class[index]}>
+            <div className={homedata.gamestatus_class[index]}>
                 
                 <div className="team">
                    <div className="score" style={{visibility: scorestate}}>{homedata.livescores[index][0]}</div>

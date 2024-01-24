@@ -14,11 +14,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 
 
-async function fetch_gamecount(){
-  const response = await fetch("/gamecount")
-  const gamecount = await response.json()
-  for (let i = 0; i < gamecount; i++){
-    sessionStorage.setItem("scorevis" + i, "visible")
-    sessionStorage.setItem("classvis" + i, "eye_visible")
-  }
-}

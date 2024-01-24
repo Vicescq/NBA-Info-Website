@@ -2,7 +2,7 @@ import "./navbar.css"
 import EyeNavItem from "./eye"
 import { Link } from "react-router-dom"
 
-function Navbar({homedata, useEyeStates}){
+function Navbar({homedata}){
     const bballprops = navitemprops_constructor("bball", "assets/navbar/bball.svg",)
     const chartprops = navitemprops_constructor("chart","assets/navbar/chart.svg")
     const bulbprops = navitemprops_constructor("bulb", "assets/navbar/bulb.svg")
@@ -20,7 +20,7 @@ function Navbar({homedata, useEyeStates}){
         <NavItem itemprops={bballprops}/>
         <NavItem itemprops={chartprops}/>
         <NavItem itemprops={bulbprops}/>
-        {homedata ? <EyeNavItem itemprops={eyeprops} homedata={homedata} useEyeStates={useEyeStates}/> : null}
+        {homedata ? <EyeNavItem itemprops={eyeprops} homedata={homedata}/> : null}
         <NavItem itemprops={githubprops}/>
     </ul>
     </nav>
@@ -40,7 +40,5 @@ function NavItem({itemprops}){
             </li>
     )
 }
-
-
 
 export default Navbar

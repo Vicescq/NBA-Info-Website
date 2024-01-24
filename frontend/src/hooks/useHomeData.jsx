@@ -16,6 +16,8 @@ export default function useHomeData(){
             return () => clearInterval(interval)
         }
     }, [initload])
+    
+    
     return homedata
 }
 
