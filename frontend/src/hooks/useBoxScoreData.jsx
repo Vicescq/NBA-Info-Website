@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-
 export default function useBoxScoreData(index){
+    const ms = 6000
     const [initload, setInitload] = useState(true)
     const [boxscoredata, setBoxscoredata] = useState(false)
 
@@ -9,14 +9,12 @@ export default function useBoxScoreData(index){
 
         if(initload){
             fetch_boxscore(setBoxscoredata, index)
-            fetch_gamecount(setGamecount)
             setInitload(false)
         }
 
         else{
             const interval = setInterval(() => {
                 fetch_boxscore(setBoxscoredata, index)
-                fetch_gamecount(setGamecount)
             }, ms)
             return () => clearInterval(interval)
         }
@@ -24,7 +22,6 @@ export default function useBoxScoreData(index){
     }, [initload]);
 
     return boxscoredata
-
 }
 
 async function fetch_boxscore(setBoxscoredata, index){
@@ -32,10 +29,4 @@ async function fetch_boxscore(setBoxscoredata, index){
     const boxscoredata = await response.json()
     setBoxscoredata(boxscoredata)
     console.log(boxscoredata)
-}
-
-async function fetch_gamecount(setGamecount){
-    const response = await fetch("/gamecount")
-    const gamecount = await response.json()
-    setGamecount(gamecount)
 }

@@ -133,23 +133,27 @@ def assign_logos(matchups):
 
 def package_home_data():
     data = {}
-    games = get_livegames()
-    gameids = get_gameids(games)
-    game_count = get_game_count(games)
-    matchups = get_matchups(games)
-    team_records = get_team_records(games)
-    livescores = get_livescores(games)
-    game_status = get_gamestatus(games)
-    gamestatus_class = get_gamestatus_class(game_status, game_count)
-    logos = assign_logos(matchups)
+    data["error"] = "SUCCESS"
+    try:
+        games = get_livegames()
+        gameids = get_gameids(games)
+        game_count = get_game_count(games)
+        matchups = get_matchups(games)
+        team_records = get_team_records(games)
+        livescores = get_livescores(games)
+        game_status = get_gamestatus(games)
+        gamestatus_class = get_gamestatus_class(game_status, game_count)
+        logos = assign_logos(matchups)
 
-    data["gameids"] = gameids
-    data["game_count"] = game_count
-    data["matchups"] = matchups
-    data["team_records"] = team_records
-    data["livescores"] = livescores
-    data["game_status"] = game_status
-    data["gamestatus_class"] = gamestatus_class
-    data["game_count"] = game_count
-    data["logos"] = logos
+        data["gameids"] = gameids
+        data["game_count"] = game_count
+        data["matchups"] = matchups
+        data["team_records"] = team_records
+        data["livescores"] = livescores
+        data["game_status"] = game_status
+        data["gamestatus_class"] = gamestatus_class
+        data["game_count"] = game_count
+        data["logos"] = logos
+    except:
+        data["error"] = "API ERROR!"
     return data
