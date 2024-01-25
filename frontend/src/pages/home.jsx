@@ -7,12 +7,14 @@ import useEyeStates from "../hooks/useEyeStates.jsx"
 
 function Home({homedata}){
 
-    const [eyestates, toggle_visibility, all_toggle_visibility] = useEyeStates(homedata.game_count)
+    const [eyestates, toggle_visibility, all_toggle_visibility] = useEyeStates(homedata.game_count, homedata.gameids)
     
     const matches = []
     for (let i = 0; i < homedata.game_count; i++){
         matches.push(<Match key={i} homedata={homedata} index={i}/>)
     }
+
+    localStorage.setItem("home-games", JSON.stringify(homedata.gameids))
 
     return(
         <>

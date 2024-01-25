@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function useEyeStates(gamecount){
+export default function useEyeStates(gamecount, gameids){
     
     // to make session data and state data persist between page reloads
     let init_eyestates = []
@@ -13,8 +13,24 @@ export default function useEyeStates(gamecount){
             init_eyestates.push(false)
         }
     }
+    
+    const [prevGameIDS, setPrevGameIDS] = useState(gameids)
     const [eyestates, setEyeStates] = useState(init_eyestates)
-
+    
+    // automatically clear settings when new games arrive
+    useEffect(() => {
+        if (JSON.stringify(gameids) !== JSON.stringify(prevGameIDS)){
+            setPrevGameIDS(gameids)
+            setEyeStates(() => {
+                const default_arr = [] 
+                for (let i = 0; i < gamecount; i++){
+                    default_arr.push(false)
+                }
+                return default_arr
+            })
+        }
+    }, [gameids])
+    
     // update session data
     useEffect(() => {
         sessionStorage.setItem("home-eyestates", JSON.stringify(eyestates))
@@ -47,5 +63,4 @@ export default function useEyeStates(gamecount){
     } 
     
     return [eyestates, toggle_visibility, all_toggle_visibility]
-
 }
