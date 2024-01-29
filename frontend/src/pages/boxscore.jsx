@@ -23,7 +23,7 @@ function Boxscore(){
     else if (out_of_bounds){
         return(
             <>
-            <Navbar/> 
+            
             <NotFound/>
             </>
         )

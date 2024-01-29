@@ -2,10 +2,15 @@ import Navbar from "../components/navbar/navbar.jsx"
 import Header from "../components/home/header.jsx"
 import Match from "../components/home/match.jsx"
 import Nogameswrn from "../components/home/nogames_wrn.jsx"
-import { createContext } from "react"
+import { createContext, useEffect, useState } from "react"
 import useEyeStates from "../hooks/useEyeStates.jsx"
 
 function Home({homedata}){
+    
+    
+
+
+
 
     const [eyestates, toggle_visibility, all_toggle_visibility] = useEyeStates(homedata.game_count, homedata.gameids)
     

@@ -10,7 +10,7 @@ function Navbar({homedata}){
     const githubprops = navitemprops_constructor("github", "assets/navbar/github.svg", "https://github.com/Vicescq/NBA-Web-Scraping", "_blank", "align_right")
     
     bballprops.href = "/"
-    chartprops.href = "/"
+    chartprops.href = "/abc"
     bulbprops.href = "/"
     eyeprops.dropdown = 1
     

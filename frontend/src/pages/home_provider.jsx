@@ -4,7 +4,19 @@ import Loading from "./loading"
 
 function HomeProvider(){
     const homedata = useHomeData()
-    return homedata ? <Home homedata={homedata}/> : <Loading/>
-}
+
+    if(homedata){
+        if(homedata.error == "SUCCESS"){
+            return <Home homedata={homedata}/>
+        }
+        else{
+            return <div>API ERROR!</div>
+        }
+    }
+    
+    else{
+        return <Loading/>
+    }
+} 
 
 export default HomeProvider

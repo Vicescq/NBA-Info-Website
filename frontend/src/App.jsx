@@ -4,6 +4,7 @@ import Home from "./pages/home.jsx"
 import Boxscore from "./pages/boxscore.jsx";
 import NotFound from "./pages/notfound.jsx";
 import HomeProvider from "./pages/home_provider.jsx";
+import Loading from "./pages/loading.jsx";
 
 function App(){
   
@@ -11,6 +12,7 @@ function App(){
     <Routes>
       <Route path="/" element={<HomeProvider/>}></Route>
       <Route path="/match/:index" element={<Boxscore/>}></Route>
+      <Route path="/abc" element={<Loading/>}></Route>
       <Route path="*" element={<NotFound/>}></Route>
     </Routes>
     )

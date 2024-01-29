@@ -154,6 +154,6 @@ def package_home_data():
         data["gamestatus_class"] = gamestatus_class
         data["game_count"] = game_count
         data["logos"] = logos
-    except:
-        data["error"] = "API ERROR!"
+    except Exception as e:
+        data["error"] = "API ERROR!: " + str(e)
     return data
